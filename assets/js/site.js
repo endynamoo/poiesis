@@ -161,7 +161,7 @@ void main(){
     revealEls.forEach((el) => el.classList.add("in"));
   }
 
-  /* — 3 · reader: word clock + waveform ---------------------------------- */
+  /* — 3 · reader: the real voice ---------------------------------------- */
   const prose = document.getElementById("prose");
   const words = [];
   if (prose) {
@@ -176,9 +176,52 @@ void main(){
     });
   }
 
+  const voice = document.getElementById("voice");
   const waveEl = document.getElementById("wave");
   const wctx = waveEl ? waveEl.getContext("2d") : null;
   const clockEl = document.getElementById("clock");
+  const hear = document.getElementById("hear");
+
+  /* phoneme timings, rendered into the page by tools/make_reader_audio.py */
+  let timings = null;
+  const timingsEl = document.getElementById("reader-timings");
+  if (timingsEl) {
+    try {
+      timings = JSON.parse(timingsEl.textContent);
+    } catch (err) {
+      timings = null;
+    }
+  }
+  let duration = timings ? timings.duration : 0;
+  let lastWord = -1;
+
+  const timecode = (s) => {
+    s = Math.max(0, Math.floor(s || 0));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+
+  function setClock(t) {
+    if (!clockEl) return;
+    clockEl.innerHTML = timecode(t) + "<span> / " + timecode(duration) + "</span>";
+  }
+
+  function wordAt(t) {
+    if (!timings) return -1;
+    const list = timings.words;
+    for (let i = list.length - 1; i >= 0; i--) {
+      if (t >= list[i][0]) return i;
+    }
+    return -1;
+  }
+
+  function paintWords(idx) {
+    if (idx === lastWord || !words.length) return;
+    for (let i = 0; i < words.length; i++) {
+      const cls = i === idx ? "lit" : i < idx ? "done" : "";
+      if (words[i].className !== cls) words[i].className = cls;
+    }
+    lastWord = idx;
+  }
 
   function sizeCanvas(c, maxDpr) {
     const dpr = Math.min(window.devicePixelRatio || 1, maxDpr || 2);
@@ -190,7 +233,28 @@ void main(){
     return dpr;
   }
 
-  function drawWave(time) {
+  /* the clip's own waveform while it plays; a resting envelope until it has */
+  let actx = null, analyser = null, samples = null, wired = false;
+  const history = [];
+  function wireAudio() {
+    if (wired || !voice) return;
+    wired = true;
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      actx = new Ctx();
+      const source = actx.createMediaElementSource(voice);
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 2048;
+      analyser.smoothingTimeConstant = 0;
+      source.connect(analyser).connect(actx.destination);
+      samples = new Uint8Array(analyser.fftSize);
+    } catch (err) {
+      analyser = null;   // the element still plays, just without the waveform
+    }
+  }
+
+  function drawWave(progress, time, playing) {
     if (!wctx) return;
     const dpr = sizeCanvas(waveEl, 2);
     const w = waveEl.width, h = waveEl.height;
@@ -198,35 +262,90 @@ void main(){
     wctx.clearRect(0, 0, w, h);
     const bars = Math.max(28, Math.floor(w / (9 * dpr)));
     const bw = w / bars;
-    const phase = (time % 41) / 41;
+    const live = analyser && playing;
+
+    if (live) {
+      analyser.getByteTimeDomainData(samples);
+      let peak = 0;
+      for (let j = 0; j < samples.length; j += 3) {
+        const v = Math.abs(samples[j] - 128) / 128;
+        if (v > peak) peak = v;
+      }
+      history.push(clamp(Math.pow(peak, 0.55) * 1.3, 0.03, 1));
+      if (history.length > 260) history.shift();
+    }
+
     for (let i = 0; i < bars; i++) {
       const p = i / bars;
-      const env = Math.sin(p * Math.PI) * 0.72 + 0.28;
-      const mod =
-        0.5 +
-        0.5 * Math.sin(p * 17 + time * 2.1) * Math.sin(p * 5 - time * 0.7) +
-        0.22 * Math.sin(p * 41 + time * 3.7);
-      const bh = clamp(mod * env, 0.08, 1) * h * 0.82;
+      let level;
+      if (history.length > 8) {
+        // the last couple of seconds of the real signal, scrolling right to left
+        const n = history.length;
+        const from = n - Math.min(n, bars * 2);
+        level = history[Math.min(n - 1, Math.floor(from + p * (n - from)))];
+      } else {
+        const env = Math.sin(p * Math.PI) * 0.62 + 0.24;
+        const mod =
+          0.5 +
+          0.5 * Math.sin(p * 11 + 1.7) * Math.sin(p * 4 - 0.6) +
+          0.2 * Math.sin(p * 23 + time * 0.35);
+        level = clamp(mod * env, 0.08, 1);
+      }
+      const bh = level * h * 0.86;
       const x = i * bw + bw * 0.22;
-      wctx.fillStyle = p < phase ? "rgba(228,105,58,.85)" : "rgba(242,235,223,.15)";
+      const played = (i + 0.5) / bars <= progress;
+      wctx.fillStyle = played ? "rgba(228,105,58,.9)" : "rgba(242,235,223,.16)";
       wctx.fillRect(x, (h - bh) / 2, Math.max(1.5 * dpr, bw * 0.5), bh);
     }
   }
 
+  function syncButton() {
+    if (!hear || !voice) return;
+    const playing = !voice.paused && !voice.ended;
+    hear.classList.toggle("is-playing", playing);
+    hear.setAttribute("aria-pressed", playing ? "true" : "false");
+    hear.setAttribute("aria-label", playing ? "Pause the voice" : "Play the voice");
+  }
+
   function updateReader(time) {
-    if (!words.length) return;
-    const per = document.body.classList.contains("is-speaking") ? 0.2 : 0.27;
-    const idx = Math.floor(time / per) % words.length;
-    for (let i = 0; i < words.length; i++) {
-      const w = words[i];
-      const cls = i === idx ? "lit" : i < idx ? "done" : "";
-      if (w.className !== cls) w.className = cls;
+    if (!voice) return;
+    const t = voice.currentTime || 0;
+    const playing = !voice.paused && !voice.ended;
+    paintWords(wordAt(t));
+    setClock(t);
+    drawWave(duration ? Math.min(1, t / duration) : 0, time, playing);
+  }
+
+  if (voice) {
+    voice.addEventListener("loadedmetadata", () => {
+      if (voice.duration && isFinite(voice.duration)) duration = voice.duration;
+      setClock(voice.currentTime || 0);
+    });
+    voice.addEventListener("play", syncButton);
+    voice.addEventListener("pause", syncButton);
+    voice.addEventListener("ended", () => {
+      voice.currentTime = 0;
+      paintWords(-1);
+      setClock(0);
+      syncButton();
+    });
+    if (hear) {
+      hear.addEventListener("click", async () => {
+        if (voice.paused || voice.ended) {
+          wireAudio();
+          if (actx && actx.state === "suspended") await actx.resume();
+          try {
+            await voice.play();
+          } catch (err) {
+            syncButton();
+          }
+        } else {
+          voice.pause();
+        }
+      });
     }
-    if (clockEl) {
-      const secs = 6 + (idx / words.length) * 35;
-      clockEl.innerHTML =
-        Math.floor(secs / 60) + ":" + String(Math.floor(secs % 60)).padStart(2, "0") + "<span> / 0:41</span>";
-    }
+    setClock(0);
+    syncButton();
   }
 
   /* — 4 · Opsis: scroll scrub -------------------------------------------- */
@@ -316,60 +435,14 @@ void main(){
     if (canLamp) lamp.classList.add("is-on");
   }, { passive: true });
 
-  /* — 7 · sound (opt in, never autoplay) --------------------------------- */
-  const hear = document.getElementById("hear");
-  let audio = null;
-  function toggleSound() {
-    if (!hear) return;
-    if (!audio) {
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if (!Ctx) return;
-      const ctx = new Ctx();
-      const master = ctx.createGain();
-      master.gain.value = 0;
-      const filter = ctx.createBiquadFilter();
-      filter.type = "lowpass";
-      filter.frequency.value = 820;
-      filter.Q.value = 0.6;
-      [130.81, 196.0, 261.63].forEach((f, i) => {
-        const o = ctx.createOscillator();
-        o.type = i === 2 ? "triangle" : "sine";
-        o.frequency.value = f;
-        o.detune.value = (i - 1) * 5;
-        const g = ctx.createGain();
-        g.gain.value = i === 2 ? 0.16 : 0.3;
-        o.connect(g).connect(filter);
-        o.start();
-      });
-      const lfo = ctx.createOscillator();
-      const lfoGain = ctx.createGain();
-      lfo.frequency.value = 0.23;
-      lfoGain.gain.value = 0.06;
-      lfo.connect(lfoGain).connect(master.gain);
-      lfo.start();
-      filter.connect(master).connect(ctx.destination);
-      audio = { ctx, master, on: false };
-    }
-    const now = audio.ctx.currentTime;
-    audio.on = !audio.on;
-    audio.master.gain.cancelScheduledValues(now);
-    audio.master.gain.setTargetAtTime(audio.on ? 0.05 : 0, now, audio.on ? 0.6 : 0.25);
-    if (audio.on) audio.ctx.resume();
-    hear.classList.toggle("is-playing", audio.on);
-    hear.setAttribute("aria-label", audio.on ? "Stop the tone" : "Play a soft tone");
-    document.body.classList.toggle("is-speaking", audio.on);
-  }
-  if (hear) hear.addEventListener("click", toggleSound);
-
-  /* — 8 · the loop ------------------------------------------------------- */
+  /* — 7 · the loop ------------------------------------------------------- */
   function tick(now) {
     const time = (now - state.t0) / 1000;
     updateScrollUI();
     updateOpsis();
     if (!reduced.matches) {
       drawShader(time);
-      drawWave(time);
-      if (heroVisible) updateReader(time);
+      updateReader(time);
     }
 
     if (canLamp) {
@@ -385,8 +458,7 @@ void main(){
 
   if (reduced.matches) {
     if (gl) drawShader(12.5);      // a single still of the beam
-    updateReader(3.2);
-    drawWave(9.5);
+    updateReader(0);
   }
 
   if ("IntersectionObserver" in window && canvas) {

@@ -28,12 +28,20 @@ back; see `.github/workflows/pages.yml`.
 ```
 index.html
 assets/css/site.css        the visual system
-assets/js/site.js          shader, clock, scrub, reveals, opt-in tone
+assets/js/site.js          shader, reader voice, scrub, reveals
+assets/audio/reader.mp3    Kokoro-82M speaking the passage (105 KB)
 assets/img/*.webp          eight stills + the social card
 assets/fonts/*.woff2       Instrument Serif (SIL OFL 1.1, licence beside it)
+tools/make_reader_audio.py re-renders the clip and its word timings
 tools/changelog_render.py  README changelog generator
 tests/                     site and changelog checks
 ```
+
+The reader is not a mock-up of a voice: the clip was rendered by
+`tools/make_reader_audio.py`, which calls the Rhapsode checkout's own Kokoro engine and
+writes both the MP3 and the per-word phoneme timings into `index.html`. Change the passage
+there, re-run the tool with Rhapsode's venv (`C:\Apps\Rhapsode\.venv\Scripts\python.exe
+tools/make_reader_audio.py`), and the highlight stays in step.
 
 ## Run it locally
 
@@ -82,6 +90,6 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 - A generated social card, an SVG favicon, Open Graph and Twitter metadata, and a self-hosted display face so the page makes no third-party requests at runtime.
 - `tools/changelog_render.py` and `tests/test_changelog.py`, the same generated-README changelog rule as the sibling repos.
 
-*...and 7 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 8 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

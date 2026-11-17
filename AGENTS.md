@@ -44,6 +44,10 @@ mid-scroll. Check those by eye, and say plainly what you did not check.
   on every image, visible focus, contrast at AA on `--ink`.
 - **Content is evidence.** Numbers on this page are measured ones (VRAM peak, test counts,
   voice counts). Do not swap them for adjectives, and do not invent a number.
+- **The reader plays a real voice.** `assets/audio/reader.mp3` and the inline
+  `reader-timings` block are both rendered by `tools/make_reader_audio.py` from the Rhapsode
+  checkout's Kokoro engine. Never hand-edit either: re-run the tool. `tests/test_site.py`
+  fails if the timing count and the passage word count disagree.
 
 ## Style
 

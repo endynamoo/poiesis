@@ -389,6 +389,10 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 }
 .reader__play:hover { background: var(--ember); border-color: var(--ember); color: #170C07; transform: scale(1.05); }
 .reader__play.is-playing { background: var(--ember); border-color: var(--ember); color: #170C07; }
+.reader__icon { display: block; }
+.reader__icon--pause { display: none; }
+.reader__play.is-playing .reader__icon--play { display: none; }
+.reader__play.is-playing .reader__icon--pause { display: block; }
 .reader__wave { flex: 1; height: 34px; width: 100%; }
 .reader__time {
   font-family: var(--mono); font-size: .7rem; color: var(--paper-45);
@@ -434,12 +438,13 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 .opsis__copy .body { color: rgba(242, 235, 223, .72); }
 
 .chips {
-  display: flex; flex-wrap: wrap; gap: .5rem;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem; max-width: 26rem;
   list-style: none; padding: 0; margin: 1.8rem 0 0;
 }
 .chips li {
-  font-size: .7rem; letter-spacing: .06em;
-  padding: .38rem .8rem; border-radius: 999px;
+  font-size: .7rem; letter-spacing: .06em; text-align: center;
+  padding: .5rem .8rem; border-radius: 999px;
   border: 1px solid var(--paper-22); color: var(--paper-70);
   backdrop-filter: blur(6px);
 }
@@ -612,6 +617,7 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
   .opsis__rail { position: relative; inset: auto; margin: 3rem auto 0; width: min(var(--wrap), 100% - var(--gutter) * 2); }
   .opsis__scroll { display: none; }
   .opsis__hud-note { display: none; }
+  .opsis__hud { justify-content: space-between; }
 
   .opsis__strip {
     display: flex; gap: .6rem; overflow-x: auto;

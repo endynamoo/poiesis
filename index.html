@@ -143,13 +143,21 @@
         <p class="reader__prose" id="prose">Begin the morning by saying to thyself, I shall meet with the busy&#8209;body, the ungrateful, arrogant, deceitful, envious, unsocial. All these things happen to them by reason of their ignorance of what is good and evil.</p>
 
         <div class="reader__player">
-          <button class="reader__play" type="button" id="hear" aria-label="Play a soft tone">
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>
+          <button class="reader__play" type="button" id="hear" aria-label="Play the voice" aria-pressed="false">
+            <svg class="reader__icon reader__icon--play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>
+            <svg class="reader__icon reader__icon--pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M7 5h3.4v14H7zM13.6 5H17v14h-3.4z" fill="currentColor"/></svg>
           </button>
           <canvas class="reader__wave" id="wave" aria-hidden="true"></canvas>
-          <span class="reader__time" id="clock">0:06<span> / 0:41</span></span>
+          <span class="reader__time" id="clock">0:00<span> / 0:13</span></span>
         </div>
+        <audio id="voice" src="assets/audio/reader.mp3" preload="metadata"></audio>
       </div>
+
+      <!-- Kokoro-82M speaking this passage, rendered by tools/make_reader_audio.py.
+           The word timings are the phoneme timings from the same synthesis. -->
+      <!-- reader-timings:begin -->
+      <script type="application/json" id="reader-timings">{"duration":13.413,"words":[[0.073,0.473],[0.473,0.699],[0.699,1.2],[1.2,1.375],[1.375,1.752],[1.752,1.927],[1.927,2.452],[2.452,2.576],[2.576,2.902],[2.902,3.178],[3.178,3.454],[3.454,3.68],[3.68,4.403],[4.403,4.629],[4.629,5.453],[5.453,6.102],[6.102,6.802],[6.802,7.327],[7.327,8.014],[8.014,8.239],[8.239,8.639],[8.639,9.016],[9.016,9.467],[9.467,9.642],[9.642,9.918],[9.918,10.093],[10.093,10.544],[10.544,10.719],[10.719,11.045],[11.045,11.796],[11.796,11.971],[11.971,12.247],[12.247,12.421],[12.421,12.697],[12.697,12.923],[12.923,13.333]]}</script>
+      <!-- reader-timings:end -->
 
     </div>
   </section>

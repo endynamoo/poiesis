@@ -4,6 +4,8 @@ A static site has no compiler to catch a typo in an asset path or a missing alt
 attribute, so this suite reads index.html the way a browser would and checks the
 things that break quietly in production.
 """
+import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -113,6 +115,36 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(len(scripts), 1)
         for path in sheet + scripts:
             self.assertGreater((ROOT / path).stat().st_size, 1000, path)
+
+    def test_reader_audio_matches_the_passage(self):
+        """The clip is real speech, and its timings cover the words on the page."""
+        audio = ROOT / "assets" / "audio" / "reader.mp3"
+        self.assertGreater(audio.stat().st_size, 20000, "reader.mp3 is missing or empty")
+
+        source = INDEX.read_text(encoding="utf-8")
+        block = re.search(
+            r'id="reader-timings">(.*?)</script>', source, re.S
+        )
+        self.assertIsNotNone(block, "no reader-timings block")
+        timings = json.loads(block.group(1))
+
+        prose = re.search(
+            r'<p class="reader__prose" id="prose">(.*?)</p>', source, re.S
+        )
+        self.assertIsNotNone(prose, "no reader passage")
+        spoken = re.sub(r"<[^>]+>", "", prose.group(1)).split()
+
+        self.assertEqual(
+            len(timings["words"]), len(spoken),
+            "one timing per word of the passage",
+        )
+        previous = 0.0
+        for start, end in timings["words"]:
+            self.assertGreaterEqual(start, previous - 0.001)
+            self.assertLessEqual(start, end)
+            self.assertLessEqual(end, timings["duration"] + 0.05)
+            previous = start
+        self.assertGreater(timings["duration"], 5)
 
     def test_html_is_utf8_and_not_double_encoded(self):
         """A PowerShell read/write cycle double-encodes every em dash in this file."""

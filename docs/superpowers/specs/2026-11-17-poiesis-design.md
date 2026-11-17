@@ -56,10 +56,11 @@ focus, and does not run at all under reduced motion.
 
 Split layout, text left, a framed reader mock right. The mock is built in HTML/CSS (not a
 screenshot) so it stays crisp at any DPI: a page of prose where the spoken word lifts to
-paper-white while the rest sits at 40% ink, a soft waveform ribbon beneath it, and a small
-transport row. The highlight advances word by word on a loop; the waveform is a canvas
-that drifts with the same clock. No audio plays unless the visitor presses `hear it`, which
-adds a quiet WebAudio tone so the motion is not arbitrary.
+paper-white while the rest sits at 40% ink, a waveform ribbon beneath it, and a small
+transport row. The play button plays the passage in **Kokoro-82M's own voice**, rendered
+offline by `tools/make_reader_audio.py` from the Rhapsode checkout; the highlight, the
+timecode and the waveform all follow that audio, and the timing of each word is the
+synthesis's phoneme timing rather than a guess.
 
 Copy is concrete: reads PDF, EPUB, DOCX, RTF, Markdown, a screenshot, a URL; OCR on-device
 via Apple Vision / Windows.Media.Ocr / Tesseract; 54 voices across 9 languages; word
@@ -179,7 +180,9 @@ AGENTS.md                    repo rules (changelog, ASCII .ps1, verify)
    and body text inherits the visitor's preferred rendering.
 3. **Real stills, mocked UI.** Opsis gets genuine pipeline output; Rhapsode's window is
    drawn in CSS so it never goes blurry and never shows a dated screenshot.
-4. **No audio by default.** A single opt-in button; autoplay would be hostile.
+4. **Real media over generated stand-ins.** The reader's audio is a Kokoro clip rendered
+   from the Rhapsode install by `tools/make_reader_audio.py`, and the word highlight reads
+   that synthesis's phoneme timings; the Opsis frames are real pipeline output.
 5. **Public repo.** Required for free Pages, and consistent with the pitch.
 
 ## Accepted risks
