@@ -8,7 +8,10 @@ One page, five movements: a spotlight through dust, a reader where the spoken wo
 the page, a film stage scrubbed by scroll, four receipts about how the work is made, and a
 way to get in touch.
 
-Live at **https://endynamoo.github.io/poiesis/**.
+Live at **https://endynamoo.github.io/poiesis/** — *currently unpublished.* The repository is
+private while the site is finished, and GitHub Pages only publishes from private repositories
+on a paid plan. Run it locally (below) or make the repository public again to bring the URL
+back; see `.github/workflows/pages.yml`.
 
 ## What it is
 
@@ -79,6 +82,6 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 - A generated social card, an SVG favicon, Open Graph and Twitter metadata, and a self-hosted display face so the page makes no third-party requests at runtime.
 - `tools/changelog_render.py` and `tests/test_changelog.py`, the same generated-README changelog rule as the sibling repos.
 
-*...and 6 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 7 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

@@ -24,8 +24,10 @@ spine and its one-line thesis: *the making is the interesting part*. The brand o
 stays `endynamoo`, the GitHub handle, so the site and both repos agree. No personal name,
 no address, no phone number.
 
-Repo: `github.com/endynamoo/poiesis`, **public** (GitHub Pages on a free account requires
-it; a public source tree is also on-message for a portfolio about craft).
+Repo: `github.com/endynamoo/poiesis`. It was **public** so that GitHub Pages could publish on
+a free account (private Pages needs Pro), and it is **private for now** while the page is
+finished — which takes the deployed site offline. Making it public again, or moving it to a
+host that serves private repositories, brings the URL back.
 
 ## The page
 

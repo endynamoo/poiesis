@@ -1,8 +1,18 @@
 name: pages
 
+# Deploys the site to GitHub Pages.
+#
+# Pages publishes from a PRIVATE repository only on a paid plan (Pro/Team/Enterprise).
+# Poiesis is private on a free account, so this workflow is manual-only and Pages has
+# been switched off in the repository settings; a push to main must not fail because of
+# it. When the repository goes public again, restore the push trigger below and re-run
+# `gh api --method POST /repos/endynamoo/poiesis/pages -f build_type=workflow`.
+#
+# on:
+#   push:
+#     branches: [main]
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

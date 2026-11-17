@@ -8,6 +8,12 @@ were given is the other half.
 The portfolio site for **Rhapsode** and **Opsis**: one static page, no framework, no build
 step, no runtime dependency. It is served straight from the repository root by GitHub Pages.
 
+**The repository is private and the site is therefore unpublished.** GitHub Pages only
+publishes from private repositories on a paid plan; on the free account nothing is deployed
+and `.github/workflows/pages.yml` is manual-only on purpose. `python -m http.server 8137` is
+how the page is reviewed for now. Do not "fix" the deploy by making the repository public
+without being asked.
+
 **The constraints are the point.** A portfolio about lean, local-first software must not ship
 a 200 KB framework or call a CDN to show four paragraphs. Before adding anything, ask whether
 the page is better without it.

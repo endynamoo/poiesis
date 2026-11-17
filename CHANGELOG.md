@@ -33,6 +33,13 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 - Nothing yet — 0.1.0 is the first cut.
 
+### Removed
+
+- The public deployment, for now. The repository is private while the page is finished, and
+  GitHub Pages does not publish from a private repository on a free account, so
+  `endynamoo.github.io/poiesis` is offline until the repository is public again or the site
+  moves to a host that serves private repositories. The deploy workflow is kept, manual-only.
+
 ### Fixed
 
 - The page's text is UTF-8 end to end, and `tests/test_site.py` now fails if a PowerShell
