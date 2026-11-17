@@ -143,8 +143,9 @@ no build step, no CDN at runtime, no analytics.
 ## Responsive
 
 Breakpoints at 1200 / 900 / 640. The two product sections collapse from split to stacked at
-900; the Opsis stage loses its pin below 900 and becomes a swipeable strip with the same
-stills; the timeline keeps its hatch language but scrolls horizontally. Type scales with
+900; the Opsis stage loses its pin below 900 **and below 760 px of height** — pinning needs
+vertical room, and a wide, short window otherwise pushes the chips into the timeline. Unpinned
+it becomes a plate: still, storyboard strip, copy, timeline. Type scales with
 `clamp()` so nothing needs a second set of sizes. Tested at 360, 390, 768, 1024, 1440, 2560.
 
 ## Accessibility

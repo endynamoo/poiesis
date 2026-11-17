@@ -90,6 +90,6 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 - A generated social card, an SVG favicon, Open Graph and Twitter metadata, and a self-hosted display face so the page makes no third-party requests at runtime.
 - `tools/changelog_render.py` and `tests/test_changelog.py`, the same generated-README changelog rule as the sibling repos.
 
-*...and 8 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 9 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

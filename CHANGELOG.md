@@ -49,6 +49,10 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Fixed
 
+- The Opsis stage no longer pins itself on a short window. Below 760 px of viewport height
+  it becomes a static plate — still, storyboard, copy, timeline — so the capability chips
+  can no longer run into the timeline rail, which is exactly what a wide, short window was
+  doing. The scrub and the live timecode only run while the stage is genuinely pinned.
 - The page's text is UTF-8 end to end, and `tests/test_site.py` now fails if a PowerShell
   read/write cycle double-encodes it into `â€"` and `Â·`.
 - The Opsis slate and the storyboard captions name the shot and take each frame really is

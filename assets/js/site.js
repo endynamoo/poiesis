@@ -350,6 +350,7 @@ void main(){
 
   /* — 4 · Opsis: scroll scrub -------------------------------------------- */
   const opsis = document.querySelector(".opsis");
+  const pinned = window.matchMedia("(min-width: 901px) and (min-height: 761px)");
   const frames = Array.from(document.querySelectorAll(".opsis__frame"));
   const beatsEl = document.getElementById("beats");
   const playhead = document.getElementById("playhead");
@@ -374,7 +375,7 @@ void main(){
 
   function updateOpsis() {
     if (!opsis || !frames.length) return;
-    if (reduced.matches || innerWidth <= 900) return;
+    if (reduced.matches || !pinned.matches) return;
     const rect = opsis.getBoundingClientRect();
     const span = opsis.offsetHeight - state.vh;
     const progress = clamp(-rect.top / Math.max(1, span), 0, 1);
