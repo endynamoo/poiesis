@@ -35,5 +35,7 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Fixed
 
+- The Opsis slate and the storyboard captions name the shot and take each frame really is
+  (03–21 of 22), rather than a running index.
 - The social card is referenced by its absolute Pages URL, so link previews resolve when
   the site is served from a subpath rather than a domain root.

@@ -249,7 +249,8 @@ void main(){
     });
   }
   const beats = beatsEl ? Array.from(beatsEl.children) : [];
-  const takes = ["b2", "b1", "b0", "b2", "b1", "b0", "b2", "b1"];
+  const SHOTS = [3, 4, 5, 7, 12, 17, 19, 21];
+  const TAKES = ["b2", "b1", "b0", "b1", "b2", "b2", "b0", "b0"];
   let activeFrame = 0, activeBeat = 0;
 
   function updateOpsis() {
@@ -264,8 +265,8 @@ void main(){
       frames[activeFrame].classList.remove("is-on");
       frames[idx].classList.add("is-on");
       activeFrame = idx;
-      if (slateShot) slateShot.textContent = "SHOT " + String(idx + 1).padStart(2, "0") + " / 22";
-      if (slateTake) slateTake.textContent = "TAKE " + takes[idx];
+      if (slateShot) slateShot.textContent = "SHOT " + String(SHOTS[idx]).padStart(2, "0") + " / 22";
+      if (slateTake) slateTake.textContent = "TAKE " + TAKES[idx];
     }
 
     const beat = Math.min(beats.length - 1, Math.floor(progress * beats.length));
