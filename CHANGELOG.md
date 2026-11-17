@@ -35,8 +35,10 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
   placeholder tone. `tools/make_reader_audio.py` renders the clip from the Rhapsode
   install, writes the phoneme timings into the page, and the highlight, the timecode and
   the waveform all follow the audio itself — the bars are the clip's own signal.
-- The Opsis capability chips sit in a balanced two-by-two grid rather than a ragged
-  three-and-one row, and the mobile timecode keeps its duration on the right.
+- The Opsis capability chips sit in a two-column grid with content-sized pills and
+  left-aligned labels, so all four labels line up on two clean edges instead of each
+  floating at a different x. Asset URLs carry a `?v=` so a stylesheet change is not
+  masked by the browser cache.
 
 ### Removed
 

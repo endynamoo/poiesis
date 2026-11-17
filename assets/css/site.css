@@ -438,13 +438,13 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 .opsis__copy .body { color: rgba(242, 235, 223, .72); }
 
 .chips {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .5rem; max-width: 26rem;
+  display: grid; grid-template-columns: repeat(2, max-content);
+  gap: .5rem 1rem; align-items: start;
   list-style: none; padding: 0; margin: 1.8rem 0 0;
 }
 .chips li {
-  font-size: .7rem; letter-spacing: .06em; text-align: center;
-  padding: .5rem .8rem; border-radius: 999px;
+  font-size: .7rem; letter-spacing: .06em; text-align: left;
+  padding: .5rem 1.1rem; border-radius: 999px;
   border: 1px solid var(--paper-22); color: var(--paper-70);
   backdrop-filter: blur(6px);
 }

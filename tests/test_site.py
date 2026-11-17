@@ -113,8 +113,9 @@ class SiteTests(unittest.TestCase):
         scripts = [a["src"] for t, a in self.page.tags if t == "script" and a.get("src")]
         self.assertEqual(len(sheet), 1)
         self.assertEqual(len(scripts), 1)
-        for path in sheet + scripts:
-            self.assertGreater((ROOT / path).stat().st_size, 1000, path)
+        for value in sheet + scripts:
+            path = urlparse(value).path          # ignore a ?v= cache-buster
+            self.assertGreater((ROOT / path).stat().st_size, 1000, value)
 
     def test_reader_audio_matches_the_passage(self):
         """The clip is real speech, and its timings cover the words on the page."""
