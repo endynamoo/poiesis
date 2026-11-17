@@ -35,6 +35,8 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Fixed
 
+- The page's text is UTF-8 end to end, and `tests/test_site.py` now fails if a PowerShell
+  read/write cycle double-encodes it into `â€"` and `Â·`.
 - The Opsis slate and the storyboard captions name the shot and take each frame really is
   (03–21 of 22), rather than a running index.
 - The social card is referenced by its absolute Pages URL, so link previews resolve when

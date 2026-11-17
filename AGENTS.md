@@ -64,6 +64,11 @@ mid-scroll. Check those by eye, and say plainly what you did not check.
 Scripts here are launched with Windows PowerShell 5.1, which reads BOM-less UTF-8 as ANSI.
 Keep `.ps1` files pure ASCII or save them with a BOM — an em dash in a string is a parse error.
 
+**Never edit `index.html`, the CSS, the JS or the Markdown with `Get-Content`/`Set-Content` in
+PowerShell 5.1.** Without `-Encoding utf8` on *both* halves it reads UTF-8 as ANSI and writes
+the mojibake back, so every em dash, middot and arrow in the page becomes `â€"` and `Â·`. Use the
+editor tools, or a Python one-liner. `tests/test_site.py` fails when the page is double-encoded.
+
 ## When in doubt
 
 Ask, or stop and report the ambiguity. A blocked task is cheap; an unreviewable change is not.

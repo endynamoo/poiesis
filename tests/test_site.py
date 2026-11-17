@@ -114,6 +114,14 @@ class SiteTests(unittest.TestCase):
         for path in sheet + scripts:
             self.assertGreater((ROOT / path).stat().st_size, 1000, path)
 
+    def test_html_is_utf8_and_not_double_encoded(self):
+        """A PowerShell read/write cycle double-encodes every em dash in this file."""
+        text = INDEX.read_bytes().decode("utf-8")  # raises on invalid bytes
+        self.assertTrue(text.startswith("<!doctype html>"), "no BOM, no leading blank line")
+        for marker in ("\u00c3", "\u00c2", "\u00e2\u0080"):
+            self.assertNotIn(marker, text, "mojibake: %r" % marker)
+        self.assertIn("\u2014", text, "the page should still have an em dash")
+
 
 if __name__ == "__main__":
     unittest.main()
