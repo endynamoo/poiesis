@@ -35,4 +35,5 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Fixed
 
-- Nothing yet.
+- The social card is referenced by its absolute Pages URL, so link previews resolve when
+  the site is served from a subpath rather than a domain root.
