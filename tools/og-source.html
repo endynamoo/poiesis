@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: "Instrument Serif";
+    src: url("../assets/fonts/instrument-serif-latin.woff2") format("woff2");
+    font-weight: 400; font-style: normal;
+  }
+  @font-face {
+    font-family: "Instrument Serif";
+    src: url("../assets/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+    font-weight: 400; font-style: italic;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; position: relative;
+    background: #0B0A0C; color: #F2EBDF;
+    font-family: "Segoe UI", sans-serif;
+  }
+  .beam {
+    position: absolute; inset: -20% 0 auto 50%; width: 900px; height: 900px;
+    transform: translateX(-50%);
+    background: radial-gradient(50% 60% at 50% 0%, rgba(228,105,58,.34), rgba(228,105,58,.06) 55%, transparent 72%);
+  }
+  .frame {
+    position: absolute; inset: 0 0 0 50%;
+    background: url("../assets/img/frame-02.webp") center/cover;
+    opacity: .55; filter: saturate(.85);
+  }
+  .fade {
+    position: absolute; inset: 0 0 0 50%;
+    background:
+      linear-gradient(90deg, #0B0A0C 0%, rgba(11,10,12,.92) 22%, rgba(11,10,12,.12) 92%),
+      linear-gradient(180deg, rgba(11,10,12,.55) 0%, rgba(11,10,12,0) 30%);
+  }
+  .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, #0B0A0C 94%); }
+  .wrap { position: relative; padding: 76px 88px; height: 100%; display: flex; flex-direction: column; }
+  .eyebrow { font-size: 15px; letter-spacing: .3em; text-transform: uppercase; color: rgba(242,235,223,.62); }
+  .eyebrow b { color: #E4693A; font-weight: 400; }
+  h1 {
+    font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
+    font-size: 84px; line-height: .99; letter-spacing: -.02em; margin-top: 30px; max-width: 780px;
+  }
+  h1 em { color: #E4693A; }
+  h1 em.cold { color: #8FB6FF; }
+  .foot { margin-top: auto; display: flex; align-items: baseline; gap: 28px; font-size: 17px; color: rgba(242,235,223,.7); }
+  .foot .name { font-family: "Instrument Serif", Georgia, serif; font-size: 26px; color: #F2EBDF; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #E4693A; display: inline-block; margin-right: 10px; box-shadow: 0 0 18px 3px rgba(228,105,58,.6); }
+  .rule { flex: 1; height: 1px; background: rgba(242,235,223,.18); }
+</style>
+</head>
+<body>
+  <div class="beam"></div>
+  <div class="frame"></div>
+  <div class="fade"></div>
+  <div class="scrim"></div>
+  <div class="wrap">
+    <p class="eyebrow">Poiesis <b>&middot;</b> the making</p>
+    <h1>I make machines that <em>read</em> books &mdash; and machines that <em class="cold">film</em> them.</h1>
+    <div class="foot">
+      <span class="name"><span class="dot"></span>endynamoo</span>
+      <span class="rule"></span>
+      <span>Rhapsode &middot; Opsis</span>
+      <span>local&#8209;first AI</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>endynamoo — Poiesis · local-first AI, built end to end</title>
+<meta name="description" content="Rhapsode reads books aloud and paints them. Opsis turns a book into a film. Two local-first AI products, built end to end — no cloud, no accounts, no per-word billing.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0B0A0C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="endynamoo — Poiesis">
+<meta property="og:description" content="I make machines that read books — and machines that film them.">
+<meta property="og:image" content="assets/img/og.png">
+<meta property="og:url" content="https://endynamoo.github.io/poiesis/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#rhapsode">Skip to the work</a>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="wordmark" href="#top" aria-label="endynamoo, back to the top">
+    <span class="wordmark__dot"></span>
+    <span>endynamoo</span>
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#rhapsode">Rhapsode</a>
+    <a href="#opsis">Opsis</a>
+    <a href="#making">Making</a>
+  </nav>
+  <a class="nav__cta" href="https://github.com/endynamoo" target="_blank" rel="noopener">GitHub&nbsp;↗</a>
+</header>
+<div class="rail" aria-hidden="true"><i></i></div>
+
+<main id="top">
+
+  <!-- 1 · the light ------------------------------------------------------- -->
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas class="hero__stage" aria-hidden="true"></canvas>
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="eyebrow reveal">Poiesis <span class="dot">·</span> the making</p>
+      <h1 id="hero-title" class="display">
+        <span class="line">I&nbsp;make machines that <em>read</em> books</span>
+        <span class="line">— and machines that <em class="cold">film</em> them.</span>
+      </h1>
+      <p class="lede reveal">
+        Two local&#8209;first AI products, built end to end: the model choice, the
+        pipeline, the interface, the installer, the tests. No cloud, no accounts,
+        no per&#8209;word billing.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--ember" href="#rhapsode">See the work <span aria-hidden="true">↓</span></a>
+        <a class="btn btn--ghost" href="#making">How it's built</a>
+      </div>
+      <ul class="hero__meta reveal">
+        <li>Rhapsode <span>v0.2.0&#8209;alpha</span></li>
+        <li>Opsis <span>v0.1.0&#8209;pre&#8209;alpha</span></li>
+        <li>MIT</li>
+      </ul>
+    </div>
+
+    <div class="hero__foot">
+      <span>Scroll</span>
+      <span class="hero__foot-line" aria-hidden="true"></span>
+      <span>two products, one box</span>
+    </div>
+  </section>
+
+  <!-- 2 · the ingredients ------------------------------------------------- -->
+  <section class="strip" aria-label="Stack">
+    <div class="strip__track">
+      <span>Kokoro&#8209;82M</span><i>·</i>
+      <span>FLUX.2 klein</span><i>·</i>
+      <span>Wan2.2</span><i>·</i>
+      <span>ROCm</span><i>·</i>
+      <span>FastAPI</span><i>·</i>
+      <span>pywebview</span><i>·</i>
+      <span>PyInstaller</span><i>·</i>
+      <span>Inno Setup</span><i>·</i>
+      <span>GitHub Actions</span><i>·</i>
+      <span class="strip__dup" aria-hidden="true">Kokoro&#8209;82M</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">FLUX.2 klein</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">Wan2.2</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">ROCm</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">FastAPI</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">pywebview</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">PyInstaller</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">Inno Setup</span><i aria-hidden="true">·</i>
+      <span class="strip__dup" aria-hidden="true">GitHub Actions</span><i aria-hidden="true">·</i>
+    </div>
+  </section>
+
+  <!-- 3 · Rhapsode -------------------------------------------------------- -->
+  <section class="project project--rhapsode" id="rhapsode" aria-labelledby="rhapsode-title">
+    <div class="wrap project__grid">
+
+      <div class="project__copy">
+        <p class="index reveal"><span>01</span> Rhapsode</p>
+        <h2 id="rhapsode-title" class="display h2 reveal">
+          It reads to you.<br>Then it paints what you heard.
+        </h2>
+        <p class="body reveal">
+          Drop in a book, a PDF, a scanned page or a screenshot. Rhapsode speaks it in a
+          local voice and draws a still for every beat — and the highlight follows Kokoro's
+          <em>phoneme timings</em>, not a guess, so the words and the voice never drift apart.
+        </p>
+        <p class="body reveal">
+          OCR is on&#8209;device on all three platforms. Translation is too, through whatever
+          local model you already run. A chapter can be assembled into a 1080p cut, still
+          entirely on your machine.
+        </p>
+
+        <dl class="specs reveal">
+          <div><dt>Voice</dt><dd>Kokoro&#8209;82M, on&#8209;device</dd></div>
+          <div><dt>Library</dt><dd>54 voices · 9 languages · 0.75–3× </dd></div>
+          <div><dt>Formats</dt><dd>EPUB · PDF · DOCX · RTF · MD · OCR</dd></div>
+          <div><dt>Runs on</dt><dd>Windows · macOS · Linux</dd></div>
+        </dl>
+
+        <a class="arrow-link reveal" href="https://github.com/endynamoo/rhapsode" target="_blank" rel="noopener">
+          Rhapsode on GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <!-- reader mock: built in CSS so it stays crisp at any DPI -->
+      <div class="reader reveal" aria-hidden="true">
+        <div class="reader__chrome">
+          <span class="reader__dots"><i></i><i></i><i></i></span>
+          <span class="reader__title">Rhapsode</span>
+          <span class="reader__chip">Sepia</span>
+        </div>
+
+        <div class="reader__head">
+          <p class="reader__book">MEDITATIONS · BOOK II</p>
+          <p class="reader__chapter">i. Of the morning</p>
+        </div>
+
+        <p class="reader__prose" id="prose">Begin the morning by saying to thyself, I shall meet with the busy&#8209;body, the ungrateful, arrogant, deceitful, envious, unsocial. All these things happen to them by reason of their ignorance of what is good and evil.</p>
+
+        <div class="reader__player">
+          <button class="reader__play" type="button" id="hear" aria-label="Play a soft tone">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>
+          </button>
+          <canvas class="reader__wave" id="wave" aria-hidden="true"></canvas>
+          <span class="reader__time" id="clock">0:06<span> / 0:41</span></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4 · Opsis ----------------------------------------------------------- -->
+  <section class="opsis" id="opsis" aria-labelledby="opsis-title">
+    <div class="opsis__pin">
+
+      <div class="opsis__media" aria-hidden="true">
+        <img src="assets/img/frame-01.webp" alt="" class="opsis__frame is-on" data-frame="0" width="832" height="464">
+        <img src="assets/img/frame-02.webp" alt="" class="opsis__frame" data-frame="1" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-03.webp" alt="" class="opsis__frame" data-frame="2" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-04.webp" alt="" class="opsis__frame" data-frame="3" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-05.webp" alt="" class="opsis__frame" data-frame="4" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-06.webp" alt="" class="opsis__frame" data-frame="5" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-07.webp" alt="" class="opsis__frame" data-frame="6" width="832" height="464" loading="lazy">
+        <img src="assets/img/frame-08.webp" alt="" class="opsis__frame" data-frame="7" width="832" height="464" loading="lazy">
+        <div class="opsis__scrim"></div>
+        <p class="opsis__slate"><span id="slate-shot">SHOT 01 / 22</span><span id="slate-take">TAKE b2</span></p>
+      </div>
+
+      <div class="opsis__copy">
+        <p class="index"><span>02</span> Opsis</p>
+        <h2 id="opsis-title" class="display h2">
+          A book becomes<br>a film you can cut.
+        </h2>
+        <p class="body">
+          Ingest a PDF, an EPUB, a scan. Opsis segments it, storyboards each part into
+          shots and beats, and gives you a timeline instead of a log — picture, narration
+          and script on one clock.
+        </p>
+        <p class="body">
+          Re&#8209;renders never overwrite. A take sits beside the original,
+          <code>takes.json</code> says which one the film uses, and switching takes moves
+          a pointer rather than a file.
+        </p>
+        <ul class="chips">
+          <li>Beat&#8209;level editing</li>
+          <li>Region re&#8209;render</li>
+          <li>Worker outside the app</li>
+          <li>Honest assemble</li>
+        </ul>
+        <a class="arrow-link" href="https://github.com/endynamoo/opsis" target="_blank" rel="noopener">
+          Opsis on GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <!-- the storyboard, swipeable where the stage is not pinned -->
+      <div class="opsis__strip" aria-label="Chapter one storyboard">
+        <figure><img src="assets/img/frame-01.webp" alt="A man in a waistcoat holding a glass instrument up to the lamplight" width="832" height="464" loading="lazy"><figcaption>01</figcaption></figure>
+        <figure><img src="assets/img/frame-02.webp" alt="An experiment under a glass dome, lit from within" width="832" height="464" loading="lazy"><figcaption>02</figcaption></figure>
+        <figure><img src="assets/img/frame-03.webp" alt="Two hands steadying a small apparatus over a brass base" width="832" height="464" loading="lazy"><figcaption>03</figcaption></figure>
+        <figure><img src="assets/img/frame-04.webp" alt="Close-up of a copper coil winding in warm light" width="832" height="464" loading="lazy"><figcaption>04</figcaption></figure>
+        <figure><img src="assets/img/frame-05.webp" alt="A worn wooden case of brass instruments" width="832" height="464" loading="lazy"><figcaption>05</figcaption></figure>
+        <figure><img src="assets/img/frame-06.webp" alt="Glowing blue particles cupped in a pair of hands" width="832" height="464" loading="lazy"><figcaption>06</figcaption></figure>
+        <figure><img src="assets/img/frame-07.webp" alt="A red plasma tube glowing inside a dark cabinet" width="832" height="464" loading="lazy"><figcaption>07</figcaption></figure>
+        <figure><img src="assets/img/frame-08.webp" alt="A brass clock face throwing a small spark" width="832" height="464" loading="lazy"><figcaption>08</figcaption></figure>
+      </div>
+
+      <div class="opsis__rail" aria-hidden="true">
+        <div class="opsis__beats" id="beats"></div>
+        <div class="opsis__head" id="playhead"></div>
+        <div class="opsis__hud">
+          <span id="hud-time">00:00</span>
+          <span class="opsis__hud-note">chapter 1 · 22 shots · assembled locally</span>
+          <span>12:03</span>
+        </div>
+      </div>
+
+      <p class="opsis__scroll" aria-hidden="true">scroll to play</p>
+    </div>
+  </section>
+
+  <!-- 5 · the making ------------------------------------------------------ -->
+  <section class="making" id="making" aria-labelledby="making-title">
+    <div class="wrap">
+      <div class="making__head">
+        <p class="index reveal"><span>03</span> The making</p>
+        <h2 id="making-title" class="display h2 reveal">Four things I'd want to see<br>if someone showed me an AI product.</h2>
+      </div>
+
+      <ol class="receipts">
+        <li class="receipt reveal">
+          <span class="receipt__n">01</span>
+          <h3>Local by construction</h3>
+          <p>Weights, audio cache, library and project folders are files on your disk.
+             Nothing is uploaded, nothing is metered, and the app still works with the
+             network cable out.</p>
+        </li>
+        <li class="receipt reveal">
+          <span class="receipt__n">02</span>
+          <h3>One door to the GPU</h3>
+          <p>Measured, not guessed: 10.9&nbsp;GB peak at 832×480, four steps rather than six,
+             an fp8 text encoder, a quant ladder that trades quality for headroom. The
+             painter refuses to start when the card is full.</p>
+        </li>
+        <li class="receipt reveal">
+          <span class="receipt__n">03</span>
+          <h3>Verified, not vibed</h3>
+          <p>Both suites run on <code>windows-latest</code>. A changelog that fails CI when it
+             goes stale. A licence audit that opens every weight file and refuses anything
+             without a permissive licence.</p>
+        </li>
+        <li class="receipt reveal">
+          <span class="receipt__n">04</span>
+          <h3>Built with agents, answered by tests</h3>
+          <p>Coding agents do most of the typing. What survives is what the suite, the CI run
+             and a silent install test agree on. The agent proposes; the test disposes.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6 · close ----------------------------------------------------------- -->
+  <section class="close" aria-labelledby="close-title">
+    <div class="wrap close__inner">
+      <h2 id="close-title" class="display close__title reveal">
+        Working on something that<br><em>shouldn't leave the machine?</em>
+      </h2>
+      <p class="body reveal">
+        I build local&#8209;first AI products: the model choice, the pipeline, the desktop
+        app and the installer that ships it. If that's the shape of your problem, say hello.
+      </p>
+      <div class="close__actions reveal">
+        <a class="btn btn--ember" href="https://github.com/endynamoo" target="_blank" rel="noopener">github.com/endynamoo <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--ghost" href="https://github.com/endynamoo/poiesis/issues/new" target="_blank" rel="noopener">Open an issue</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>Poiesis — designed and built by endynamoo on a Windows box with an AMD card.</p>
+    <nav aria-label="Footer">
+      <a href="https://github.com/endynamoo/poiesis" target="_blank" rel="noopener">Source</a>
+      <a href="https://github.com/endynamoo/poiesis/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
+      <a href="#top">Top ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

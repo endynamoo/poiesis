@@ -158,7 +158,7 @@ index.html
 assets/css/site.css
 assets/js/site.js            shader, reveals, stage, cursor, clock
 assets/fonts/instrument-serif-{regular,italic}.woff2
-assets/img/opsis-{03a,03b,03c,07a,07b,07c}.webp
+assets/img/frame-01..08.webp  eight stills from chapter one of the pipeline
 assets/img/og.png            1200x630 social card
 tools/changelog_render.py    same generator as Rhapsode/Opsis
 tests/test_changelog.py      fails when the README copy is stale
