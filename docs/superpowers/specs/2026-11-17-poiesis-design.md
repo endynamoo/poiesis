@@ -35,9 +35,10 @@ One continuous scroll, dark, lit like a stage. Five movements:
 
 ### 1. Hero — the light
 
-Full viewport. A WebGL fragment shader paints a single warm spotlight cone through drifting
-dust over near-black; it leans toward the pointer and breathes. Over it, in a high-contrast
-serif:
+Full viewport. A WebGL fragment shader paints a quasar — the same figure as Rhapsode's mark:
+a black event horizon, a bright photon ring, a tilted accretion disk of violet ellipses, and
+twin cyan jets along the spin axis — with dust still drifting through the frame. It leans
+toward the pointer and turns. Over it, in a high-contrast serif:
 
 > **I make machines that read books — and machines that film them.**
 
@@ -103,12 +104,19 @@ Windows box with an AMD card`, the site's own changelog link, and the year.
 
 | Token | Value | Use |
 |---|---|---|
-| ink | `#0B0A0C` | page ground |
-| ink-2 | `#141317` | panels |
-| paper | `#F2EBDF` | body text on ink |
-| ember | `#E4693A` | Rhapsode accent, links, focus |
-| cold | `#8FB6FF` | Opsis accent, timeline |
-| ash | `#8A8590` | secondary text, rules |
+| ink | `#07070d` | page ground |
+| ink-2 | `#0b0b15` | panels, footer |
+| ink-3 | `#11111d` | raised panel (reader window) |
+| paper | `#ece9f8` | body text on ink |
+| accent | `#8b7bff` | brand violet: eyebrows, links, focus, playhead |
+| accent-ink | `#0a0716` | text on an accent fill |
+| cold | `#5fd8f5` | second voice: the hero's `film`, waveform peaks |
+| ash | `#a09cbb` | secondary text, rules |
+
+The palette is Rhapsode's own: violet signal on near-black, cyan as the second voice, paper
+tinted the same violet rather than warm. Poiesis does not assert a new brand — it stands in
+the same room as the two products it describes. Opsis keeps the warm stills; the frame
+around them is the brand.
 
 Type: **Instrument Serif** for display (self-hosted, two files, `woff2`, `font-display:
 swap`), system sans (`Segoe UI Variable` / `-apple-system` / `Inter`) for body at 17–19px,
@@ -124,15 +132,16 @@ are 1px at 8–12% paper.
 Full showpiece, governed by three rules: nothing animates without a reason; nothing blocks
 reading; everything has a still version.
 
-- Shader hero: ~90 lines of GLSL, rendered at `min(devicePixelRatio, 1.5)`, paused when the
-  tab is hidden or the canvas is off-screen. Static single frame under
-  `prefers-reduced-motion` and on WebGL failure (CSS radial-gradient fallback).
+- Shader hero: ~100 lines of GLSL painting a quasar (event horizon, photon ring, ringed
+  accretion disk, twin jets) at `min(devicePixelRatio, 1.5)`, paused when the tab is hidden
+  or the canvas is off-screen. Static single frame under `prefers-reduced-motion` and on
+  WebGL failure (CSS radial-gradient fallback).
 - Scroll: native scrolling (no hijack). `requestAnimationFrame` reads a cached scroll value;
   parallax and the pinned stages are transform-only. Reveals are
   `IntersectionObserver`-driven, once per element, 700–900ms, cubic-bezier(.16,1,.3,1).
 - Word highlight, waveform and playhead are one clock (elapsed time), so they never drift
   apart.
-- Custom cursor: a 10px ember dot with a 40px lagging ring that grows over links; disabled
+- Custom cursor: a 10px accent dot with a 40px lagging ring that grows over links; disabled
   for coarse pointers and reduced motion. Native cursor stays visible.
 - Hover states are 180ms; nothing pulses forever except the strip marquee.
 
@@ -150,10 +159,10 @@ it becomes a plate: still, storyboard strip, copy, timeline. Type scales with
 
 ## Accessibility
 
-Semantic landmarks, one `<h1>`, real links (no div-buttons), visible focus rings in ember,
+Semantic landmarks, one `<h1>`, real links (no div-buttons), visible focus rings in accent,
 `prefers-reduced-motion` honoured for every animation, alt text on the stills, contrast AA
-on ink (paper 14:1, ember on ink 5.4:1 — checked, not assumed), and the shader canvas is
-`aria-hidden` with the headline as real text.
+on ink (paper 16.8:1, accent on ink 6.1:1, ash 7.6:1 — checked, not assumed), and the shader
+canvas is `aria-hidden` with the headline as real text.
 
 ## Files
 
