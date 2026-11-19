@@ -51,7 +51,7 @@ float motes(vec2 uv, float t){
     float h = hash(cell + fi * 17.0);
     vec2 off = vec2(hash(cell + 3.1), hash(cell + 7.7)) - 0.5;
     float d = length(f - off * 0.72);
-    float spark = smoothstep(0.052, 0.0, d) * step(0.78, h);
+    float spark = smoothstep(0.052, 0.0, d) * step(0.80, h);
     sum += spark * (0.45 + 0.55 * sin(uTime * 1.3 + h * 40.0));
   }
   return sum;
@@ -59,39 +59,74 @@ float motes(vec2 uv, float t){
 
 void main(){
   vec2 uv = (gl_FragCoord.xy - 0.5 * uRes) / uRes.y;
-  float t = uTime * 0.05;
+  float t = uTime;
 
-  float sway = sin(t * 0.62) * 0.05 + uMouse.x * 0.038;
-  float sx = uv.x - sway;
+  // wide frames put the quasar beside the headline; portrait frames seat it,
+  // smaller, in the empty band above the scroll cue
+  float aspect = uRes.x / uRes.y;
+  float wide = smoothstep(0.85, 1.15, aspect);
+  vec2 c = mix(vec2(0.05, -0.34), vec2(0.46, 0.010), wide);
+  c += vec2(uMouse.x * 0.020, uMouse.y * 0.016);
+  float size = mix(0.44, 1.0, wide);
+  vec2 p = (uv - c) / size;
 
-  float depth = clamp(0.62 - uv.y, 0.0, 2.0);
-  float halfW = 0.030 + depth * 0.44;
-  float edge = abs(sx) / halfW;
+  // accretion disk: tilted, flattened, slowly turning
+  float tilt = -0.14 + uMouse.y * 0.05;
+  float ct = cos(tilt), st = sin(tilt);
+  vec2 q = vec2(ct * p.x + st * p.y, -st * p.x + ct * p.y);
+  vec2 d = vec2(q.x, q.y / 0.36);
+  float r = length(d);
+  float ang = atan(d.y, d.x);
 
-  float beam = exp(-pow(edge, 2.2));
-  beam *= 1.0 - smoothstep(0.78, 1.62, depth) * 0.82;
+  vec3 violet = vec3(0.545, 0.482, 1.0);
+  vec3 cyan   = vec3(0.373, 0.847, 0.961);
+  vec3 hot    = vec3(0.925, 0.885, 1.0);
+  vec3 col    = vec3(0.027, 0.027, 0.051);
 
-  float core = exp(-pow(edge * 3.6, 2.0)) * (1.0 - smoothstep(0.30, 1.1, depth));
-  float m = motes(uv, t) * beam;
+  // halo
+  col += violet * exp(-pow(r / 0.62, 2.0)) * 0.085;
 
-  vec3 warm = vec3(1.0, 0.58, 0.33);
-  vec3 cold = vec3(0.52, 0.68, 1.0);
-  vec3 col = vec3(0.035, 0.032, 0.045);
+  // disk: turbulence streaked along the orbit, brighter where it approaches
+  float streak = fbm(vec2(ang * 2.1 + t * 0.30, r * 8.0 - t * 0.45));
+  float band = smoothstep(0.100, 0.150, r) * (1.0 - smoothstep(0.300, 0.445, r));
+  float rings = 0.0;
+  for (int i = 0; i < 3; i++) {
+    float fi = float(i);
+    float rad = 0.140 + fi * 0.080;
+    rings += exp(-pow((r - rad) / (0.0055 + 0.0022 * fi), 2.0)) * (1.0 - fi * 0.30);
+  }
+  float disk = rings * 0.62 * (0.55 + 0.75 * streak) + band * 0.34 * (0.50 + 0.70 * streak);
+  disk *= 0.46 + 1.02 * smoothstep(-1.0, 1.0, -cos(ang));
+  col += mix(violet, hot, smoothstep(0.235, 0.120, r)) * disk * 0.85;
 
-  col += warm * beam * 0.17;
-  col += mix(warm, cold, smoothstep(0.0, 1.35, depth)) * m * 1.35;
-  col += warm * core * 0.30;
+  // photon ring — circular, because light is
+  float rr = length(p);
+  col += mix(cyan, hot, 0.6) * exp(-pow((rr - 0.104) / 0.0055, 2.0)) * 0.80;
 
-  // a faint bounce of light on the floor of the frame
-  float floorGlow = exp(-pow(length(vec2(sx * 1.3, uv.y + 0.46)) / 0.30, 2.0));
-  col += warm * floorGlow * 0.05;
+  // event horizon
+  col *= 1.0 - smoothstep(0.100, 0.088, rr);
 
-  float vig = 1.0 - smoothstep(0.42, 1.22, length(uv * vec2(1.0, 0.92)));
-  col *= 0.30 + 0.70 * vig;
-  col += (hash(gl_FragCoord.xy + fract(uTime) * 41.0) - 0.5) * 0.025;
+  // twin jets along the spin axis, flickering as they climb
+  float jetW = 0.0065 + 0.020 * abs(q.y);
+  float jet = exp(-pow(abs(q.x) / jetW, 2.0));
+  jet *= 1.0 - smoothstep(0.20, 0.74, abs(q.y));
+  jet *= 0.55 + 0.60 * fbm(vec2(q.y * 5.5 - t * 0.85, 0.37));
+  col += mix(cyan, hot, 0.32) * jet * mix(0.11, 0.30, wide);
+
+  // white-hot centre
+  col += hot * exp(-pow(rr / 0.028, 2.0)) * 0.45;
+
+  // dust still drifts through the frame
+  float m = motes(uv, t * 0.05);
+  col += mix(violet, cyan, 0.45) * m * 0.30;
+
+  float vig = 1.0 - smoothstep(0.44, 1.24, length(uv * vec2(1.0, 0.92)));
+  col *= 0.32 + 0.68 * vig;
+  col += (hash(gl_FragCoord.xy + fract(uTime) * 41.0) - 0.5) * 0.022;
 
   gl_FragColor = vec4(col, 1.0);
-}`;
+}
+`;
 
   function initShader() {
     if (!canvas) return;
@@ -294,7 +329,7 @@ void main(){
       const bh = level * h * 0.86;
       const x = i * bw + bw * 0.22;
       const played = (i + 0.5) / bars <= progress;
-      wctx.fillStyle = played ? "rgba(228,105,58,.9)" : "rgba(242,235,223,.16)";
+      wctx.fillStyle = played ? "rgba(139,123,255,.92)" : "rgba(236,233,248,.18)";
       wctx.fillRect(x, (h - bh) / 2, Math.max(1.5 * dpr, bw * 0.5), bh);
     }
   }

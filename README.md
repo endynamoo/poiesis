@@ -4,9 +4,9 @@
 (the reciter) and [Opsis](https://github.com/endynamoo/opsis) (the spectacle): one site
 presenting both as working local-first AI products, built end to end.
 
-One page, five movements: a spotlight through dust, a reader where the spoken word lifts off
-the page, a film stage scrubbed by scroll, four receipts about how the work is made, and a
-way to get in touch.
+One page, five movements: a quasar turning over drifting dust, a reader where the spoken word
+lifts off the page, a film stage scrubbed by scroll, four receipts about how the work is made,
+and a way to get in touch.
 
 Live at **https://endynamoo.github.io/poiesis/** — *currently unpublished.* The repository is
 private while the site is finished, and GitHub Pages only publishes from private repositories
@@ -83,13 +83,13 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 **Added**
 
 - The Poiesis site: one scrolling page that presents **Rhapsode** and **Opsis** as working local-first AI products rather than screenshots and adjectives, and says who built them.
-- A WebGL hero: a single warm spotlight through drifting dust that leans toward the pointer, painted at capped resolution, paused off-screen, and frozen to one still frame when the visitor asks for reduced motion.
+- A WebGL hero: a quasar — black event horizon, photon ring, a tilted disk of violet ellipses, twin jets — turning over drifting dust and leaning toward the pointer, painted at capped resolution, paused off-screen, and frozen to one still frame when the visitor asks for reduced motion.
 - The Rhapsode reader drawn in HTML and CSS — a passage from the *Meditations* where the spoken word lifts to paper-white, a waveform that follows the same clock, and an opt-in WebAudio tone so the movement is not decoration.
 - The Opsis stage: eight real stills from chapter one of the pipeline, dissolved by scroll against a beat timeline with a moving playhead and a running timecode. The same frames become a swipeable storyboard strip on phones.
 - Four "receipts" in the making section: local by construction, one door to the GPU, verified not vibed, and built with agents answered by tests — each with measured numbers.
 - A generated social card, an SVG favicon, Open Graph and Twitter metadata, and a self-hosted display face so the page makes no third-party requests at runtime.
 - `tools/changelog_render.py` and `tests/test_changelog.py`, the same generated-README changelog rule as the sibling repos.
 
-*...and 9 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 10 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

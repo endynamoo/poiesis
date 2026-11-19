@@ -10,9 +10,10 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 - The Poiesis site: one scrolling page that presents **Rhapsode** and **Opsis** as working
   local-first AI products rather than screenshots and adjectives, and says who built them.
-- A WebGL hero: a single warm spotlight through drifting dust that leans toward the pointer,
-  painted at capped resolution, paused off-screen, and frozen to one still frame when the
-  visitor asks for reduced motion.
+- A WebGL hero: a quasar — black event horizon, photon ring, a tilted disk of violet
+  ellipses, twin jets — turning over drifting dust and leaning toward the pointer, painted at
+  capped resolution, paused off-screen, and frozen to one still frame when the visitor asks
+  for reduced motion.
 - The Rhapsode reader drawn in HTML and CSS — a passage from the *Meditations* where the
   spoken word lifts to paper-white, a waveform that follows the same clock, and an opt-in
   WebAudio tone so the movement is not decoration.
@@ -31,6 +32,11 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Changed
 
+- The whole page wears **Rhapsode's palette** instead of its own warm one: violet signal
+  (`#8b7bff`) on near-black (`#07070d`), cyan (`#5fd8f5`) as the second voice, and paper
+  tinted the same violet (`#ece9f8`). Contrast was re-measured, not assumed — body text
+  16.8:1, accent on ground 6.1:1, secondary 7.6:1, all AA. Opsis keeps its warm stills; only
+  the frame around them belongs to the brand.
 - The reader's play button plays **Kokoro-82M speaking the passage**, not a synthesised
   placeholder tone. `tools/make_reader_audio.py` renders the clip from the Rhapsode
   install, writes the phoneme timings into the page, and the highlight, the timecode and
