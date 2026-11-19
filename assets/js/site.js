@@ -383,6 +383,23 @@ void main(){
     syncButton();
   }
 
+  /* — 3b · the demo take -------------------------------------------------- */
+  const demo = document.getElementById("demo");
+  const demoPlay = document.getElementById("demo-play");
+  if (demo && demoPlay) {
+    const figure = demo.closest(".demo");
+    demoPlay.addEventListener("click", () => {
+      // one machine, one voice at a time
+      if (voice && !voice.paused) voice.pause();
+      demo.play().catch(() => {});
+    });
+    demo.addEventListener("play", () => {
+      figure.classList.add("is-playing");
+      if (voice && !voice.paused) voice.pause();
+    });
+    demo.addEventListener("ended", () => figure.classList.remove("is-playing"));
+  }
+
   /* — 4 · Opsis: scroll scrub -------------------------------------------- */
   const opsis = document.querySelector(".opsis");
   const pinned = window.matchMedia("(min-width: 901px) and (min-height: 761px)");

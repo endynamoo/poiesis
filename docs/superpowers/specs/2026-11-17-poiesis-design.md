@@ -69,6 +69,12 @@ highlight from Kokoro's phoneme timings rather than a guess; 20 themes; Quick Re
 hotkey; a chapter assemby into a 1080p MP4. Ends with `Rhapsode on GitHub →` and the
 release line (`v0.2.0-alpha · MIT · Windows · macOS · Linux`).
 
+Then one unedited take of the app itself: 65 seconds recorded by Rhapsode's own
+`scripts/record_demo.py`, library → reading → search → chapter film → settings, carrying the
+app's Kokoro narration. It is a film frame rather than a screenshot — slate, poster, a
+`Watch the demo` button, and a timestamped transcript for anyone who cannot hear it. It is
+2 MB on disk and downloads nothing until pressed.
+
 ### 4. Opsis — the still that moves
 
 A pinned, full-bleed stage. Real stills from the pipeline (`shot03_b0/b1/b2`,
@@ -172,6 +178,8 @@ assets/css/site.css
 assets/js/site.js            shader, reveals, stage, cursor, clock
 assets/fonts/instrument-serif-{regular,italic}.woff2
 assets/img/frame-01..08.webp  eight stills from chapter one of the pipeline
+assets/img/rhapsode-demo-poster.webp  the demo's film beat, shown before playback
+assets/video/rhapsode-demo.mp4       the 65-second Rhapsode take, 2 MB
 assets/img/og.png            1200x630 social card
 tools/changelog_render.py    same generator as Rhapsode/Opsis
 tests/test_changelog.py      fails when the README copy is stale
