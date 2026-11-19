@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=6">
+<link rel="stylesheet" href="assets/css/site.css?v=7">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -160,6 +160,48 @@
       <!-- reader-timings:end -->
 
     </div>
+
+    <!-- the app itself: one unedited take, recorded by Rhapsode's scripts/record_demo.py -->
+    <figure class="demo reveal" aria-labelledby="demo-title">
+      <div class="demo__slate">
+        <p class="demo__rec"><i aria-hidden="true"></i> Unedited take</p>
+        <p class="demo__meta" id="demo-title">Rhapsode 0.2.0 · library, voice, search, chapter film · 1:05</p>
+      </div>
+
+      <div class="demo__frame">
+        <video class="demo__video" id="demo" controls preload="none" playsinline
+               width="1280" height="871"
+               poster="assets/img/rhapsode-demo-poster.webp"
+               aria-describedby="demo-desc">
+          <source src="assets/video/rhapsode-demo.mp4" type="video/mp4">
+          <p>Your browser cannot play this file. <a href="assets/video/rhapsode-demo.mp4">Download the demo</a> (2 MB).</p>
+        </video>
+        <span class="demo__scrim" aria-hidden="true"></span>
+        <button class="demo__play" type="button" id="demo-play">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5l12 7-12 7z" fill="currentColor"/></svg>
+          <span>Watch the demo</span>
+        </button>
+      </div>
+
+      <figcaption class="demo__caption" id="demo-desc">
+        Sixty-five seconds, no cuts, no compositing. A document goes in, the voice reads it while
+        the words light up, a search finds the phrase, and a chapter film is assembled from stills
+        drawn on this machine — then the settings that decide how much the machine is allowed to do
+        on its own.
+      </figcaption>
+
+      <details class="demo__transcript">
+        <summary>Transcript and what is on screen</summary>
+        <ol>
+          <li><b>0:00</b> — the library, two documents. <i>Add document</i> opens the picker.</li>
+          <li><b>0:10</b> — <i>The Lantern Keeper's Ledger</i> plays. Kokoro reads; the word being spoken is lit, the sentence sits above the controls.</li>
+          <li><b>0:31</b> — <i>Search library</i> for <b>lantern</b>: the hits are segments, marked with the words that matched.</li>
+          <li><b>0:45</b> — the chapter film: one still per beat, the narration underneath, scrubbable as a timeline.</li>
+          <li><b>0:58</b> — settings: default voice, reading font, text size, theme, stills engine, auto-generate, follow along.</li>
+        </ol>
+        <p>The spoken words are the book's own text — “The lantern keeper counted the ships that evening, as she had done every evening for eleven years.” — read by Kokoro-82M running locally.</p>
+      </details>
+    </figure>
   </section>
 
   <!-- 4 · Opsis ----------------------------------------------------------- -->
@@ -301,6 +343,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=5" defer></script>
+<script src="assets/js/site.js?v=6" defer></script>
 </body>
 </html>

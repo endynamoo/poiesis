@@ -402,6 +402,62 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 }
 .reader__time span { color: var(--ash); }
 
+/* the demo take ---------------------------------------------------------- */
+.demo {
+  width: min(var(--wrap), 100% - var(--gutter) * 2, calc(min(72svh, 760px) * 1280 / 871));
+  margin: clamp(3rem, 9vh, 6.5rem) auto 0;
+}
+.demo__slate {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap; padding-bottom: .85rem; border-bottom: 1px solid var(--paper-10);
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+}
+.demo__rec {
+  margin: 0; display: inline-flex; align-items: center; gap: .55rem; color: var(--accent);
+}
+.demo__rec i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 12px 2px rgba(139, 123, 255, .5);
+}
+.demo__meta { margin: 0; color: var(--ash); }
+.demo__frame {
+  position: relative; margin: 1.1rem auto 0; border-radius: 14px; overflow: hidden;
+  background: #05050a; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9), 0 0 0 1px var(--paper-10);
+}
+.demo__video { display: block; width: 100%; height: auto; }
+.demo__scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(72% 72% at 50% 50%, rgba(7, 7, 13, 0), rgba(7, 7, 13, .5));
+  transition: opacity .45s var(--ease);
+}
+.demo__play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: .6rem; padding: .8rem 1.3rem;
+  border-radius: 999px; border: 1px solid var(--paper-22); background: rgba(7, 7, 13, .72);
+  color: var(--paper); font: inherit; font-size: .92rem; cursor: pointer; white-space: nowrap;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+}
+.demo__play:hover {
+  background: var(--accent); border-color: var(--accent); color: var(--accent-ink);
+  transform: translate(-50%, -50%) scale(1.03);
+}
+.demo__play:focus-visible { outline: 2px solid var(--cold); outline-offset: 3px; }
+.demo.is-playing .demo__scrim, .demo.is-playing .demo__play { opacity: 0; pointer-events: none; }
+.demo__caption {
+  margin-top: 1.1rem; max-width: 64ch; color: var(--paper-70);
+  font-size: .97rem; line-height: 1.62;
+}
+.demo__transcript { margin-top: 1rem; max-width: 70ch; font-size: .92rem; color: var(--paper-45); }
+.demo__transcript summary {
+  cursor: pointer; color: var(--ash); font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.demo__transcript summary:hover { color: var(--paper); }
+.demo__transcript ol { margin: .85rem 0 0; padding-left: 1.15rem; display: grid; gap: .4rem; line-height: 1.55; }
+.demo__transcript b { color: var(--paper-70); font-weight: 600; font-variant-numeric: tabular-nums; }
+.demo__transcript p { margin: .85rem 0 0; }
+
 /* 4 · Opsis -------------------------------------------------------------- */
 .opsis { position: relative; height: 420vh; background: #07070d; }
 .opsis__pin {

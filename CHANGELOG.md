@@ -8,6 +8,12 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- The **Rhapsode demo**, embedded: one unedited 65-second take recorded by the app's own
+  `scripts/record_demo.py` — library, Kokoro reading with the words lighting up, a search
+  that finds the phrase, a chapter film assembled from stills, then the settings that decide
+  what the machine may do on its own. Re-encoded to 2 MB (1280 px, CRF 30, mono AAC) with a
+  poster frame from the film beat, a written caption, and a timestamped transcript of what is
+  on screen, since the take carries the app's own narration rather than captions.
 - The Poiesis site: one scrolling page that presents **Rhapsode** and **Opsis** as working
   local-first AI products rather than screenshots and adjectives, and says who built them.
 - A WebGL hero: a quasar — black event horizon, photon ring, a tilted disk of violet
