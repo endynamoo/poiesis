@@ -2,3 +2,5 @@
 Thumbs.db
 .DS_Store
 __pycache__/
+# rendered again by tools/make_style_clips.py; the bytes that ship are in assets/video
+docs/style-variants/clips/

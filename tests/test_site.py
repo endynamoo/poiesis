@@ -170,20 +170,28 @@ class SiteTests(unittest.TestCase):
         )
 
     def test_the_style_grid_is_one_scene_in_several_looks(self):
-        """The style demo has to be the same beat rendered again, not four shots."""
+        """The style demo has to be the same beat rendered again, and it moves."""
         source = INDEX.read_text(encoding="utf-8")
         start = source.index('<figure class="styles')
         end = source.index('<section class="making"', start)   # the block ends before the next section
         block = source[start:end]
         self.assertIn("</figure>", block, "style grid never closes")
-        looks = re.findall(r'assets/img/style-([a-z-]+)\.webp', block)
+
+        looks = re.findall(r'assets/video/style-([a-z-]+)\.mp4', block)
         self.assertGreaterEqual(len(looks), 3, "fewer than three styles shown")
         self.assertEqual(len(looks), len(set(looks)), "a style is listed twice")
         for slug in looks:
+            clip = ROOT / "assets" / "video" / ("style-%s.mp4" % slug)
+            self.assertTrue(clip.is_file(), "missing clip for %s" % slug)
+            self.assertGreater(clip.stat().st_size, 50_000, "%s looks truncated" % slug)
             self.assertTrue(
                 (ROOT / "assets" / "img" / ("style-%s.webp" % slug)).is_file(),
-                "missing render for %s" % slug,
+                "missing poster for %s" % slug,
             )
+        # each tile carries a poster and a label, so it means something before it runs
+        self.assertEqual(block.count('poster="assets/img/style-'), len(looks), "a tile has no poster")
+        self.assertEqual(block.count("<video"), len(looks), "a style tile is not video")
+
         # the mechanism, stated where a reader sees it
         for claim in ("identity + style", "field on the project"):
             self.assertIn(claim, block, "the demo does not say how style works")
