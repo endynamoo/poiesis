@@ -8,6 +8,13 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- **Opsis footage, from the pipeline itself.** Twenty-four seconds cut from four of the
+  twenty-two shots that made chapter one — keyframes painted with FLUX.2 klein, motion
+  generated with Wan 2.2 on the local card, narration spoken by Chatterbox Turbo, the source
+  being Faraday's own 1831 *Experimental Researches*. It sits under the Opsis stage with a
+  shot-by-shot transcript. Because a pre-alpha shown beside a shipped product reads as
+  shipped, it is labelled **Alpha footage** twice: a violet pill beside the slate, and the
+  first words of the caption.
 - The **Rhapsode demo**, embedded: one unedited 65-second take recorded by the app's own
   `scripts/record_demo.py` — library, Kokoro reading with the words lighting up, a search
   that finds the phrase, a chapter film assembled from stills, then the settings that decide
@@ -38,6 +45,9 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Changed
 
+- **Each demo silences the other.** Pressing play on the footage pauses the reader's voice and
+  vice versa, so the page never talks over itself. A take paused from its own controls gets its
+  play pill back.
 - **The opening line now says what I actually do.** "I make machines…" was the wrong claim;
   it reads **I develop software that reads books — and software that films them.** The social
   card was re-rendered to match, since the headline is baked into it.

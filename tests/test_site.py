@@ -147,6 +147,28 @@ class SiteTests(unittest.TestCase):
             previous = start
         self.assertGreater(timings["duration"], 5)
 
+    def test_the_two_demos_exist_and_are_labelled(self):
+        """Both videos ship, and the pre-alpha one says so where it is seen."""
+        for name, floor in (("rhapsode-demo.mp4", 1_000_000), ("opsis-demo.mp4", 1_000_000)):
+            video = ROOT / "assets" / "video" / name
+            self.assertTrue(video.is_file(), "missing %s" % name)
+            self.assertGreater(video.stat().st_size, floor, "%s looks truncated" % name)
+
+        source = INDEX.read_text(encoding="utf-8")
+        self.assertIn('poster="assets/img/opsis-demo-poster.webp"', source)
+        self.assertTrue((ROOT / "assets" / "img" / "opsis-demo-poster.webp").is_file())
+
+        figure = re.search(
+            r'<figure class="demo demo--opsis.*?</figure>', source, re.S
+        )
+        self.assertIsNotNone(figure, "no Opsis footage figure")
+        # the clarification has to be visible text, not a title attribute
+        self.assertRegex(figure.group(0), r"Alpha footage", "alpha status not stated")
+        self.assertRegex(
+            figure.group(0), r"<b>Alpha footage\.</b>",
+            "alpha status should open the caption, not hide in the slate",
+        )
+
     def test_html_is_utf8_and_not_double_encoded(self):
         """A PowerShell read/write cycle double-encodes every em dash in this file."""
         text = INDEX.read_bytes().decode("utf-8")  # raises on invalid bytes

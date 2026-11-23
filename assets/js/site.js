@@ -428,21 +428,41 @@ void main(){
     syncButton();
   }
 
-  /* — 3b · the demo take -------------------------------------------------- */
-  const demo = document.getElementById("demo");
-  const demoPlay = document.getElementById("demo-play");
-  if (demo && demoPlay) {
-    const figure = demo.closest(".demo");
-    demoPlay.addEventListener("click", () => {
+  /* — 3b · the demo takes ------------------------------------------------ */
+  const demos = Array.from(document.querySelectorAll(".demo"));
+  demos.forEach((figure) => {
+    const video = figure.querySelector("video");
+    const button = figure.querySelector(".demo__play");
+    if (!video || !button) return;
+
+    button.addEventListener("click", () => {
       // one machine, one voice at a time
       if (voice && !voice.paused) voice.pause();
-      demo.play().catch(() => {});
+      demos.forEach((other) => {
+        const v = other.querySelector("video");
+        if (v && v !== video && !v.paused) v.pause();
+      });
+      video.play().catch(() => {});
     });
-    demo.addEventListener("play", () => {
+    video.addEventListener("play", () => {
       figure.classList.add("is-playing");
       if (voice && !voice.paused) voice.pause();
     });
-    demo.addEventListener("ended", () => figure.classList.remove("is-playing"));
+    video.addEventListener("ended", () => figure.classList.remove("is-playing"));
+    // a take paused from its own controls gets its play pill back
+    video.addEventListener("pause", () => {
+      if (!video.ended) figure.classList.remove("is-playing");
+    });
+  });
+
+  // and the other way round: the reader's voice silences any footage
+  if (voice) {
+    voice.addEventListener("play", () => {
+      demos.forEach((figure) => {
+        const video = figure.querySelector("video");
+        if (video && !video.paused) video.pause();
+      });
+    });
   }
 
   /* — 4 · Opsis: scroll scrub -------------------------------------------- */
