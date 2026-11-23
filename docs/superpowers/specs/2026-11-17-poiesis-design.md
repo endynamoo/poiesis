@@ -96,6 +96,12 @@ and it is real text rather than decoration, so it is announced to a screen reade
 Ends with `Opsis on GitHub →`, `v0.1.1-pre-alpha · MIT · Windows 11 · ROCm`, and one honest
 sentence about what it is: a studio that is early, and works.
 
+Then, outside the pinned stage, the footage: 24 seconds cut from four of the twenty-two
+shots (03, 07, 12, 17) with a shot-by-shot transcript under it. It is marked **Alpha
+footage** in the slate pill and again as the caption's first words — a pre-alpha next to a
+shipped product will otherwise be read as one. The voice on it is Chatterbox Turbo, not
+Kokoro: the pipeline's own narration renderer, named so the page does not imply otherwise.
+
 ### 5. The making
 
 Four columns, each a receipt rather than a claim, under one sentence about how it is made —

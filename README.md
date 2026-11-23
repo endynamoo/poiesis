@@ -82,12 +82,10 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Added**
 
+- **Opsis footage, from the pipeline itself.** Twenty-four seconds cut from four of the twenty-two shots that made chapter one — keyframes painted with FLUX.2 klein, motion generated with Wan 2.2 on the local card, narration spoken by Chatterbox Turbo, the source being Faraday's own 1831 *Experimental Researches*. It sits under the Opsis stage with a shot-by-shot transcript. Because a pre-alpha shown beside a shipped product reads as shipped, it is labelled **Alpha footage** twice: a violet pill beside the slate, and the first words of the caption.
 - The **Rhapsode demo**, embedded: one unedited 65-second take recorded by the app's own `scripts/record_demo.py` — library, Kokoro reading with the words lighting up, a search that finds the phrase, a chapter film assembled from stills, then the settings that decide what the machine may do on its own. Re-encoded to 2 MB (1280 px, CRF 30, mono AAC) with a poster frame from the film beat, a written caption, and a timestamped transcript of what is on screen, since the take carries the app's own narration rather than captions.
 - The Poiesis site: one scrolling page that presents **Rhapsode** and **Opsis** as working local-first AI products rather than screenshots and adjectives, and says who built them.
-- A WebGL hero: a quasar — black event horizon, photon ring, a tilted disk of violet ellipses, twin jets — turning over drifting dust and leaning toward the pointer, painted at capped resolution, paused off-screen, and frozen to one still frame when the visitor asks for reduced motion.
-- The Rhapsode reader drawn in HTML and CSS — a passage from the *Meditations* where the spoken word lifts to paper-white, a waveform that follows the same clock, and an opt-in WebAudio tone so the movement is not decoration.
-- The Opsis stage: eight real stills from chapter one of the pipeline, dissolved by scroll against a beat timeline with a moving playhead and a running timecode. The same frames become a swipeable storyboard strip on phones.
 
-*...and 18 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 22 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->
