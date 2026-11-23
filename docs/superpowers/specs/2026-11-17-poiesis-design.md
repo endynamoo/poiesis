@@ -44,10 +44,11 @@ toward the pointer and turns. Over it, in a high-contrast serif:
 
 Eyebrow `Poiesis · the making` small and letterspaced above. Below the headline, one
 sentence: two products, built end to end, entirely on the machine in front of you — no
-cloud, no accounts, no per-word billing. Then a byline — *Built by endynamoo — software that
-runs on your machine, not on someone's meter* — so authorship is stated where it is read
-rather than only in the footer. Two text links: `See the work ↓` and `How it's built`.
-Bottom edge: a hairline scroll progress rail that fills as you read.
+cloud, no accounts, no per-word billing. Then a byline that states the point plainly: **To
+empower.** followed by *built in the open at endynamoo — it's our software, not mine, and it
+stays free forever*. Authorship is the open-source kind: no solo framing anywhere on the page.
+Two text links: `See the work ↓` and `How it's built`. Bottom edge: a hairline scroll progress
+rail that fills as you read.
 
 ### 2. Signature strip
 
@@ -97,8 +98,9 @@ sentence about what it is: a studio that is early, and works.
 
 ### 5. The making
 
-Four columns, each a receipt rather than a claim, under one sentence that names the author —
-*all of it is built by one person, under the name endynamoo*:
+Four columns, each a receipt rather than a claim, under one sentence about how it is made —
+*started at endynamoo and built in the open by everyone who shows up; both products are MIT,
+anyone can fork them, and they stay free forever*:
 
 - **Local by construction** — the model weights, audio cache, library and project folders
   are files on the visitor's disk; nothing is uploaded.
