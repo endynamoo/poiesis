@@ -41,10 +41,12 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 - **The opening line now says what I actually do.** "I make machines…" was the wrong claim;
   it reads **I develop software that reads books — and software that films them.** The social
   card was re-rendered to match, since the headline is baked into it.
-- **Authorship is stated where a visitor reads it**, not only in the footer: a byline under the
-  lede — *Built by endynamoo — software that runs on your machine, not on someone's meter* —
-  and a sentence at the top of *The making* naming the same handle on every commit, release and
-  installer.
+- **The page says whose software this is.** "To empower." now leads the byline under the
+  hero, followed by *built in the open at endynamoo — it's our software, not mine, and it
+  stays free forever*. The solo framing is gone everywhere: *The making* now says the work is
+  built in the open by everyone who shows up, the close section invites the code to be taken,
+  and the footer reads *the products are MIT: our software, free forever*. The hero meta says
+  `MIT · free forever` instead of just `MIT`.
 - **The Rhapsode panel is current with 0.3.4-beta** instead of describing 0.2.0: on-device
   translation through Apple's framework or a local model, library search by words or by
   meaning, the warm-ahead cache that makes the first press of play instant, and spec rows
