@@ -455,6 +455,9 @@ void main(){
     });
   });
 
+  // four silent loops of one beat; declared here so the voice handler can reach them
+  const styleLoops = Array.from(document.querySelectorAll(".styles__grid video"));
+
   // and the other way round: the reader's voice silences any footage
   if (voice) {
     voice.addEventListener("play", () => {
@@ -462,6 +465,42 @@ void main(){
         const video = figure.querySelector("video");
         if (video && !video.paused) video.pause();
       });
+      styleLoops.forEach((v) => v.pause());
+    });
+  }
+
+  /* — 3c · the style loops ------------------------------------------------ */
+  // They run while the grid is on screen and stop when it is not, so a
+  // background tab is not spending frames on them. All four start from zero
+  // together, because they are one beat in four looks and drift would read as
+  // four different moments. Under reduced motion they stay on their posters -
+  // the still version of the demo.
+  const styleGrid = document.querySelector(".styles__grid");
+  if (styleLoops.length && styleGrid) {
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const run = () => {
+      if (still.matches) return;
+      styleLoops.forEach((v) => {
+        try { v.currentTime = 0; } catch (err) { /* not seekable yet */ }
+        v.play().catch(() => {});
+      });
+    };
+    const halt = () => styleLoops.forEach((v) => { if (!v.paused) v.pause(); });
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((rows) => {
+        if (rows.some((row) => row.isIntersecting)) run();
+        else halt();
+      }, { threshold: 0.15 });
+      io.observe(styleGrid);
+    } else {
+      run();
+    }
+
+    // a demo take or the reader taking over silences the loops
+    demos.forEach((figure) => {
+      const video = figure.querySelector("video");
+      if (video) video.addEventListener("play", halt);
     });
   }
 

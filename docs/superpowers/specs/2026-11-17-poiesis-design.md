@@ -106,12 +106,16 @@ Chatterbox Turbo, not Kokoro: the pipeline's own narration renderer, named so th
 not imply otherwise.
 
 After it, the style grid: one beat of chapter one rendered four ways — warm cel, woodcut,
-ukiyo-e, neo-noir — same identity, beat, seed, size and four steps, only the style string
-changed. Two columns of large panels, not four thumbnails, because the point is only visible
-at size. The caption names the mechanism instead of admiring the pictures: `identity + style +
-scene`, the same style line handed to the motion model, and the director told not to invent a
-colour the style does not name. `tools/make_style_variants.py` regenerates all four and writes
-its inputs to `docs/style-variants/`.
+ukiyo-e, neo-noir — and animated four times, since a still proves the palette and a clip
+proves the film. Same identity, beat, seed, size and four steps; only the style string differs,
+and the same string is handed to the motion model. Two columns of large tiles, not four
+thumbnails, because the point is only visible at size. The caption names the mechanism instead
+of admiring the pictures: `identity + style + scene`, the style line reaching the motion prompt,
+and the director told not to invent a colour the style does not name. The loops start together
+(one beat in four looks must not drift), stop off screen, and stay on their posters under
+reduced motion. `tools/make_style_variants.py` renders the keyframes and
+`tools/make_style_clips.py` animates them; both are committed with their inputs in
+`docs/style-variants/`.
 
 ### 5. The making
 

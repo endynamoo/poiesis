@@ -452,12 +452,14 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
   margin: 1.1rem 0 0;
 }
 .styles__grid figure { margin: 0; }
-.styles__grid img {
+.styles__grid img,
+.styles__grid video {
   display: block; width: 100%; height: auto; border-radius: 8px;
   border: 1px solid var(--paper-10); background: var(--ink-2);
   transition: transform .5s var(--ease), border-color .3s var(--ease);
 }
-.styles__grid figure:hover img {
+.styles__grid figure:hover img,
+.styles__grid figure:hover video {
   transform: translateY(-3px) scale(1.012); border-color: var(--paper-22);
 }
 .styles__grid figcaption {

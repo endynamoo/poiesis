@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=11">
+<link rel="stylesheet" href="assets/css/site.css?v=12">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -346,23 +346,35 @@
 
       <div class="styles__grid">
         <figure>
-          <img src="assets/img/style-warm-cel.webp" width="832" height="464" loading="lazy"
-               alt="The shipped default: warm gouache cel animation, amber light, a man in a brown work coat watching a copper disc throw sparks">
+          <video muted loop playsinline preload="metadata" width="832" height="480"
+                 poster="assets/img/style-warm-cel.webp"
+                 aria-label="Warm cel: warm gouache cel animation, amber light, a man in a brown work coat watching a copper disc throw sparks">
+            <source src="assets/video/style-warm-cel.mp4" type="video/mp4">
+          </video>
           <figcaption><b>Warm cel</b> <span>shipped default</span></figcaption>
         </figure>
         <figure>
-          <img src="assets/img/style-woodcut.webp" width="832" height="464" loading="lazy"
-               alt="The same beat as a black-ink woodcut: cream paper, dense hatching, two values, the sparks cut as straight lines">
+          <video muted loop playsinline preload="metadata" width="832" height="480"
+                 poster="assets/img/style-woodcut.webp"
+                 aria-label="Woodcut: black ink engraving on cream paper, dense hatching, two values, the sparks cut as straight lines">
+            <source src="assets/video/style-woodcut.mp4" type="video/mp4">
+          </video>
           <figcaption><b>Woodcut</b> <span>ink on cream</span></figcaption>
         </figure>
         <figure>
-          <img src="assets/img/style-ukiyoe.webp" width="832" height="464" loading="lazy"
-               alt="The same beat as a Japanese woodblock print: indigo sky, vermilion disc, bold contours, flat colour">
+          <video muted loop playsinline preload="metadata" width="832" height="480"
+                 poster="assets/img/style-ukiyoe.webp"
+                 aria-label="Ukiyo-e: Japanese woodblock print, indigo sky, vermilion disc, bold contours, flat colour">
+            <source src="assets/video/style-ukiyoe.mp4" type="video/mp4">
+          </video>
           <figcaption><b>Ukiyo-e</b> <span>indigo &amp; vermilion</span></figcaption>
         </figure>
         <figure>
-          <img src="assets/img/style-noir.webp" width="832" height="464" loading="lazy"
-               alt="The same beat as neo-noir animation: charcoal and teal, one hard rim light along the shoulder, deep shadow">
+          <video muted loop playsinline preload="metadata" width="832" height="480"
+                 poster="assets/img/style-noir.webp"
+                 aria-label="Neo-noir: charcoal and teal, one hard rim light along the shoulder, deep shadow">
+            <source src="assets/video/style-noir.mp4" type="video/mp4">
+          </video>
           <figcaption><b>Neo-noir</b> <span>charcoal &amp; teal</span></figcaption>
         </figure>
       </div>
@@ -370,11 +382,12 @@
       <figcaption class="demo__caption">
         The art style is not baked into the model. It is a field on the project — one line of
         text the director writes — and every keyframe is composed as <i>identity + style +
-        scene</i>: the same line is handed to the motion model, and the director is told not to
+        scene</i>; the same line is handed to the motion model, and the director is told not to
         invent a colour the style does not name. Change the line, re-render the part, and the
-        same beats come back as a different film. These four are one beat of chapter one with
-        the same seed, size, four steps and identity; only the style string differs. Rendered
-        here, on this card, in seconds each.
+        same beat comes back as a different film. These four are one beat of chapter one, in
+        motion: same keyframe composition, same seed, same size, four steps, same identity —
+        only the style string differs, and only the style string decides the look. Generated
+        here, on this card, by the same code path the app's motion job runs.
       </figcaption>
     </figure>
   </div>
@@ -455,6 +468,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=10" defer></script>
+<script src="assets/js/site.js?v=11" defer></script>
 </body>
 </html>

@@ -8,13 +8,18 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
-- **The look is a field, shown four ways.** One beat of chapter one rendered as four art
-  styles — the shipped warm cel, a black-ink woodcut, a ukiyo-e woodblock and neo-noir — all
-  from the same identity, beat, seed, size and four steps, with only the style string changed.
-  The grid explains the mechanism the product actually uses: every keyframe is composed as
-  *identity + style + scene*, the same style line goes to the motion model, and the director is
-  told not to invent a colour the style does not name. Rendered on this machine by
-  `tools/make_style_variants.py`, which calls Opsis's own keyframe composition.
+- **The style demo moves.** Four clips instead of four stills: one beat of chapter one,
+  animated four times — warm cel, woodcut, ukiyo-e, neo-noir — so the comparison is the film
+  and not the frame. Each keyframe was composed by the product's own path
+  (`identity + style + scene`), then handed to Wan 2.2 I2V with the same style line as its
+  motion prompt, which is what the app's motion job does. Silent, looping, 5 seconds each
+  (~320 KB), all four started together so they stay in step; they pause when the grid leaves
+  the screen and stay on their posters under reduced motion.
+- **The look is a field, shown four ways.** The grid explains the mechanism the product
+  actually uses: every keyframe is composed as *identity + style + scene*, the same style line
+  goes to the motion model, and the director is told not to invent a colour the style does not
+  name. Rendered on this machine by `tools/make_style_variants.py` and
+  `tools/make_style_clips.py`, which call Opsis's own keyframe and motion composition.
 - **Opsis footage, from the pipeline itself.** Thirty-five seconds cut from four of the
   twenty-two shots that made chapter one — keyframes painted with FLUX.2 klein, motion
   generated with Wan 2.2 on the local card, narration spoken by Chatterbox Turbo, the source
