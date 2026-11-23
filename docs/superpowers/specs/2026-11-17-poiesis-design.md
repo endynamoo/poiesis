@@ -105,6 +105,14 @@ pre-alpha next to a shipped product will otherwise be read as one. The voice on 
 Chatterbox Turbo, not Kokoro: the pipeline's own narration renderer, named so the page does
 not imply otherwise.
 
+After it, the style grid: one beat of chapter one rendered four ways — warm cel, woodcut,
+ukiyo-e, neo-noir — same identity, beat, seed, size and four steps, only the style string
+changed. Two columns of large panels, not four thumbnails, because the point is only visible
+at size. The caption names the mechanism instead of admiring the pictures: `identity + style +
+scene`, the same style line handed to the motion model, and the director told not to invent a
+colour the style does not name. `tools/make_style_variants.py` regenerates all four and writes
+its inputs to `docs/style-variants/`.
+
 ### 5. The making
 
 Four columns, each a receipt rather than a claim, under one sentence about how it is made —

@@ -1,0 +1,22 @@
+[
+ {
+  "slug": "warm-cel",
+  "label": "Warm cel",
+  "style": "hand-painted cel animation, gouache painting style, warm amber tones, subtle film grain, no text, no watermark"
+ },
+ {
+  "slug": "woodcut",
+  "label": "Woodcut",
+  "style": "black ink woodcut engraving on cream paper, dense hatching for shadow, two values only, no colour, no text, no watermark"
+ },
+ {
+  "slug": "ukiyoe",
+  "label": "Ukiyo-e",
+  "style": "Japanese ukiyo-e woodblock print, indigo and vermilion, flat colour areas, bold contour lines, paper texture, no text, no watermark"
+ },
+ {
+  "slug": "noir",
+  "label": "Neo-noir",
+  "style": "1990s neo-noir animation, charcoal blacks and cold teal, single hard rim light, deep shadows, no text, no watermark"
+ }
+]
