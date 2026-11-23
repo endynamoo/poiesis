@@ -8,13 +8,14 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
-- **Opsis footage, from the pipeline itself.** Twenty-four seconds cut from four of the
+- **Opsis footage, from the pipeline itself.** Thirty-five seconds cut from four of the
   twenty-two shots that made chapter one — keyframes painted with FLUX.2 klein, motion
   generated with Wan 2.2 on the local card, narration spoken by Chatterbox Turbo, the source
   being Faraday's own 1831 *Experimental Researches*. It sits under the Opsis stage with a
-  shot-by-shot transcript. Because a pre-alpha shown beside a shipped product reads as
-  shipped, it is labelled **Alpha footage** twice: a violet pill beside the slate, and the
-  first words of the caption.
+  shot-by-shot transcript. Every cut lands in a pause the narration leaves between sentences,
+  so the voice finishes its thought before the picture changes. Because a pre-alpha shown
+  beside a shipped product reads as shipped, it is labelled **Alpha footage** twice: a violet
+  pill beside the slate, and the first words of the caption.
 - The **Rhapsode demo**, embedded: one unedited 65-second take recorded by the app's own
   `scripts/record_demo.py` — library, Kokoro reading with the words lighting up, a search
   that finds the phrase, a chapter film assembled from stills, then the settings that decide
@@ -45,6 +46,12 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Changed
 
+- **The Opsis footage no longer cuts sentences in half.** The first cut took a flat six seconds
+  from each shot, which chopped the narration mid-thought. Each cut now lands in a pause the
+  voice itself makes — found with `silencedetect` on the source clips and confirmed after the
+  join: every seam ends in −48 to −54 dB of room tone, and the shots are joined with hard cuts
+  instead of fading both ends to black, because the double fade put a dead black frame between
+  them. The clip is 35 seconds now, not 24.
 - **Each demo silences the other.** Pressing play on the footage pauses the reader's voice and
   vice versa, so the page never talks over itself. A take paused from its own controls gets its
   play pill back.
