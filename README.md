@@ -88,6 +88,6 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 - The Rhapsode reader drawn in HTML and CSS — a passage from the *Meditations* where the spoken word lifts to paper-white, a waveform that follows the same clock, and an opt-in WebAudio tone so the movement is not decoration.
 - The Opsis stage: eight real stills from chapter one of the pipeline, dissolved by scroll against a beat timeline with a moving playhead and a running timecode. The same frames become a swipeable storyboard strip on phones.
 
-*...and 17 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 18 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->
