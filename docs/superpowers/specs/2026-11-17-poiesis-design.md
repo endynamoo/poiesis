@@ -40,12 +40,14 @@ a black event horizon, a bright photon ring, a tilted accretion disk of violet e
 twin cyan jets along the spin axis — with dust still drifting through the frame. It leans
 toward the pointer and turns. Over it, in a high-contrast serif:
 
-> **I make machines that read books — and machines that film them.**
+> **I develop software that reads books — and software that films them.**
 
-Eyebrow `ENDYNAMoo · POIESIS` small and letterspaced above. Below the headline, one
+Eyebrow `Poiesis · the making` small and letterspaced above. Below the headline, one
 sentence: two products, built end to end, entirely on the machine in front of you — no
-cloud, no accounts, no per-word billing. Two text links: `See the work ↓` and
-`How it's built`. Bottom edge: a hairline scroll progress rail that fills as you read.
+cloud, no accounts, no per-word billing. Then a byline — *Built by endynamoo — software that
+runs on your machine, not on someone's meter* — so authorship is stated where it is read
+rather than only in the footer. Two text links: `See the work ↓` and `How it's built`.
+Bottom edge: a hairline scroll progress rail that fills as you read.
 
 ### 2. Signature strip
 
@@ -85,12 +87,18 @@ a timeline bar of beats — hatched where a clip is missing, wider where the bea
 that makes the product real: the app never holds a GPU context; it writes job files and a
 worker behind a scheduled task renders them, so closing the window cannot kill a render.
 
-Ends with `Opsis on GitHub →`, `v0.1.0-pre-alpha · MIT · Windows 11 · ROCm`, and one honest
+The frame carries a status banner beside the shot slate — violet beacon, `Unreleased · ETA
+~2 weeks to public beta` — because a pre-alpha shown in the same frame as a shipped product
+will be read as one. It sits at the top right in both the pinned stage and the static plate,
+and it is real text rather than decoration, so it is announced to a screen reader too.
+
+Ends with `Opsis on GitHub →`, `v0.1.1-pre-alpha · MIT · Windows 11 · ROCm`, and one honest
 sentence about what it is: a studio that is early, and works.
 
 ### 5. The making
 
-Four columns, each a receipt rather than a claim:
+Four columns, each a receipt rather than a claim, under one sentence that names the author —
+*all of it is built by one person, under the name endynamoo*:
 
 - **Local by construction** — the model weights, audio cache, library and project folders
   are files on the visitor's disk; nothing is uploaded.

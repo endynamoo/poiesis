@@ -10,12 +10,12 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:title" content="endynamoo — Poiesis">
-<meta property="og:description" content="I make machines that read books — and machines that film them.">
+<meta property="og:description" content="I develop software that reads books - and software that films them.">
 <meta property="og:image" content="https://endynamoo.github.io/poiesis/assets/img/og.png">
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=7">
+<link rel="stylesheet" href="assets/css/site.css?v=8">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -45,21 +45,25 @@
     <div class="hero__inner">
       <p class="eyebrow reveal">Poiesis <span class="dot">·</span> the making</p>
       <h1 id="hero-title" class="display">
-        <span class="line">I&nbsp;make machines that <em>read</em> books</span>
-        <span class="line">— and machines that <em class="cold">film</em> them.</span>
+        <span class="line">I&nbsp;develop software that <em>reads</em> books</span>
+        <span class="line">— and software that <em class="cold">films</em> them.</span>
       </h1>
       <p class="lede reveal">
         Two local&#8209;first AI products, built end to end: the model choice, the
         pipeline, the interface, the installer, the tests. No cloud, no accounts,
         no per&#8209;word billing.
       </p>
+      <p class="hero__by reveal">
+        Built by <a href="https://github.com/endynamoo" target="_blank" rel="noopener">endynamoo</a>
+        — software that runs on your machine, not on someone's meter.
+      </p>
       <div class="hero__actions reveal">
         <a class="btn btn--accent" href="#rhapsode">See the work <span aria-hidden="true">↓</span></a>
         <a class="btn btn--ghost" href="#making">How it's built</a>
       </div>
       <ul class="hero__meta reveal">
-        <li>Rhapsode <span>v0.2.0&#8209;alpha</span></li>
-        <li>Opsis <span>v0.1.0&#8209;pre&#8209;alpha</span></li>
+        <li>Rhapsode <span>v0.3.4&#8209;beta</span></li>
+        <li>Opsis <span>v0.1.1&#8209;pre&#8209;alpha</span></li>
         <li>MIT</li>
       </ul>
     </div>
@@ -105,21 +109,23 @@
           It reads to you.<br>Then it paints what you heard.
         </h2>
         <p class="body reveal">
-          Drop in a book, a PDF, a scanned page or a screenshot. Rhapsode speaks it in a
-          local voice and draws a still for every beat — and the highlight follows Kokoro's
-          <em>phoneme timings</em>, not a guess, so the words and the voice never drift apart.
+          Drop in a book, a PDF, a scanned page, a screenshot or a URL. Rhapsode speaks it in a
+          local voice and lights each word as it is said — the highlight follows Kokoro's
+          <em>phoneme timings</em>, not a guess, so the words and the voice never drift apart. It
+          paints a manga still for every beat, and a chapter can be cut into a 1080p film.
         </p>
         <p class="body reveal">
-          OCR is on&#8209;device on all three platforms. Translation is too, through whatever
-          local model you already run. A chapter can be assembled into a 1080p cut, still
-          entirely on your machine.
+          OCR is on&#8209;device on all three platforms, and so is translation — through Apple's
+          own framework on macOS, or a local model you already run anywhere else. Search finds a
+          passage across the whole library by words or by meaning, and opening a book pre-reads
+          the first sentences so the first press of play is instant.
         </p>
 
         <dl class="specs reveal">
-          <div><dt>Voice</dt><dd>Kokoro&#8209;82M, on&#8209;device</dd></div>
-          <div><dt>Library</dt><dd>54 voices · 9 languages · 0.75–3× </dd></div>
-          <div><dt>Formats</dt><dd>EPUB · PDF · DOCX · RTF · MD · OCR</dd></div>
-          <div><dt>Runs on</dt><dd>Windows · macOS · Linux</dd></div>
+          <div><dt>Voice</dt><dd>Kokoro&#8209;82M · 54 voices · 9 languages</dd></div>
+          <div><dt>Reads</dt><dd>EPUB · PDF · DOCX · RTF · MD · OCR · URL</dd></div>
+          <div><dt>Search</dt><dd>Words or meaning, across the library</dd></div>
+          <div><dt>Runs on</dt><dd>Windows · macOS · Linux · 0.75–3×</dd></div>
         </dl>
 
         <a class="arrow-link reveal" href="https://github.com/endynamoo/rhapsode" target="_blank" rel="noopener">
@@ -165,7 +171,7 @@
     <figure class="demo reveal" aria-labelledby="demo-title">
       <div class="demo__slate">
         <p class="demo__rec"><i aria-hidden="true"></i> Unedited take</p>
-        <p class="demo__meta" id="demo-title">Rhapsode 0.2.0 · library, voice, search, chapter film · 1:05</p>
+        <p class="demo__meta" id="demo-title">Rhapsode · library, voice, search, chapter film · 1:05</p>
       </div>
 
       <div class="demo__frame">
@@ -208,7 +214,7 @@
   <section class="opsis" id="opsis" aria-labelledby="opsis-title">
     <div class="opsis__pin">
 
-      <div class="opsis__media" aria-hidden="true">
+      <div class="opsis__media">
         <img src="assets/img/frame-01.webp" alt="" class="opsis__frame is-on" data-frame="0" width="832" height="464">
         <img src="assets/img/frame-02.webp" alt="" class="opsis__frame" data-frame="1" width="832" height="464" loading="lazy">
         <img src="assets/img/frame-03.webp" alt="" class="opsis__frame" data-frame="2" width="832" height="464" loading="lazy">
@@ -217,8 +223,14 @@
         <img src="assets/img/frame-06.webp" alt="" class="opsis__frame" data-frame="5" width="832" height="464" loading="lazy">
         <img src="assets/img/frame-07.webp" alt="" class="opsis__frame" data-frame="6" width="832" height="464" loading="lazy">
         <img src="assets/img/frame-08.webp" alt="" class="opsis__frame" data-frame="7" width="832" height="464" loading="lazy">
-        <div class="opsis__scrim"></div>
-        <p class="opsis__slate"><span id="slate-shot">SHOT 03 / 22</span><span id="slate-take">TAKE b2</span></p>
+        <div class="opsis__scrim" aria-hidden="true"></div>
+        <p class="opsis__slate" aria-hidden="true"><span id="slate-shot">SHOT 03 / 22</span><span id="slate-take">TAKE b2</span></p>
+
+        <p class="opsis__banner">
+          <i aria-hidden="true"></i>
+          <span>Unreleased</span>
+          <span class="opsis__banner-note">ETA ~2 weeks to public beta</span>
+        </p>
       </div>
 
       <div class="opsis__copy">
@@ -279,6 +291,11 @@
       <div class="making__head">
         <p class="index reveal"><span>03</span> The making</p>
         <h2 id="making-title" class="display h2 reveal">Four things I'd want to see<br>if someone showed me an AI product.</h2>
+        <p class="body making__by reveal">
+          All of it is built by one person, under the name
+          <a href="https://github.com/endynamoo" target="_blank" rel="noopener">endynamoo</a> — the
+          same handle on every commit, every release and every installer.
+        </p>
       </div>
 
       <ol class="receipts">

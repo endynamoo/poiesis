@@ -38,6 +38,22 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Changed
 
+- **The opening line now says what I actually do.** "I make machines…" was the wrong claim;
+  it reads **I develop software that reads books — and software that films them.** The social
+  card was re-rendered to match, since the headline is baked into it.
+- **Authorship is stated where a visitor reads it**, not only in the footer: a byline under the
+  lede — *Built by endynamoo — software that runs on your machine, not on someone's meter* —
+  and a sentence at the top of *The making* naming the same handle on every commit, release and
+  installer.
+- **The Rhapsode panel is current with 0.3.4-beta** instead of describing 0.2.0: on-device
+  translation through Apple's framework or a local model, library search by words or by
+  meaning, the warm-ahead cache that makes the first press of play instant, and spec rows
+  rewritten to what the repo actually ships (voice and languages, formats incl. URL, search,
+  platforms and 0.75–3×). The demo slate no longer pins a version the take was not recorded
+  from.
+- **The Opsis stage says it is unreleased.** A banner sits on the frame beside the shot slate —
+  violet beacon, `Unreleased · ETA ~2 weeks to public beta` — so a pre-alpha is not read as a
+  shipped product. It is real text, not decoration, so it is announced too.
 - The whole page wears **Rhapsode's palette** instead of its own warm one: violet signal
   (`#8b7bff`) on near-black (`#07070d`), cyan (`#5fd8f5`) as the second voice, and paper
   tinted the same violet (`#ece9f8`). Contrast was re-measured, not assumed — body text
