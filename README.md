@@ -82,10 +82,9 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Added**
 
+- **The look is a field, shown four ways.** One beat of chapter one rendered as four art styles — the shipped warm cel, a black-ink woodcut, a ukiyo-e woodblock and neo-noir — all from the same identity, beat, seed, size and four steps, with only the style string changed. The grid explains the mechanism the product actually uses: every keyframe is composed as *identity + style + scene*, the same style line goes to the motion model, and the director is told not to invent a colour the style does not name. Rendered on this machine by `tools/make_style_variants.py`, which calls Opsis's own keyframe composition.
 - **Opsis footage, from the pipeline itself.** Thirty-five seconds cut from four of the twenty-two shots that made chapter one — keyframes painted with FLUX.2 klein, motion generated with Wan 2.2 on the local card, narration spoken by Chatterbox Turbo, the source being Faraday's own 1831 *Experimental Researches*. It sits under the Opsis stage with a shot-by-shot transcript. Every cut lands in a pause the narration leaves between sentences, so the voice finishes its thought before the picture changes. Because a pre-alpha shown beside a shipped product reads as shipped, it is labelled **Alpha footage** twice: a violet pill beside the slate, and the first words of the caption.
-- The **Rhapsode demo**, embedded: one unedited 65-second take recorded by the app's own `scripts/record_demo.py` — library, Kokoro reading with the words lighting up, a search that finds the phrase, a chapter film assembled from stills, then the settings that decide what the machine may do on its own. Re-encoded to 2 MB (1280 px, CRF 30, mono AAC) with a poster frame from the film beat, a written caption, and a timestamped transcript of what is on screen, since the take carries the app's own narration rather than captions.
-- The Poiesis site: one scrolling page that presents **Rhapsode** and **Opsis** as working local-first AI products rather than screenshots and adjectives, and says who built them.
 
-*...and 23 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 25 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

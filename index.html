@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=10">
+<link rel="stylesheet" href="assets/css/site.css?v=11">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -334,6 +334,48 @@
         afterwards — the polish pass redraws each still from itself, and the takes are kept,
         which is why re-renders never overwrite.</p>
       </details>
+    </figure>
+
+    <!-- the look is a field, not a model: one beat, four style strings, same
+         seed. Rendered on this machine by tools/make_style_variants.py. -->
+    <figure class="styles reveal" aria-labelledby="styles-title">
+      <div class="demo__slate">
+        <p class="demo__rec"><i aria-hidden="true"></i> One scene, four looks</p>
+        <p class="demo__meta" id="styles-title">shot 03 · same seed · four style strings</p>
+      </div>
+
+      <div class="styles__grid">
+        <figure>
+          <img src="assets/img/style-warm-cel.webp" width="832" height="464" loading="lazy"
+               alt="The shipped default: warm gouache cel animation, amber light, a man in a brown work coat watching a copper disc throw sparks">
+          <figcaption><b>Warm cel</b> <span>shipped default</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/style-woodcut.webp" width="832" height="464" loading="lazy"
+               alt="The same beat as a black-ink woodcut: cream paper, dense hatching, two values, the sparks cut as straight lines">
+          <figcaption><b>Woodcut</b> <span>ink on cream</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/style-ukiyoe.webp" width="832" height="464" loading="lazy"
+               alt="The same beat as a Japanese woodblock print: indigo sky, vermilion disc, bold contours, flat colour">
+          <figcaption><b>Ukiyo-e</b> <span>indigo &amp; vermilion</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/style-noir.webp" width="832" height="464" loading="lazy"
+               alt="The same beat as neo-noir animation: charcoal and teal, one hard rim light along the shoulder, deep shadow">
+          <figcaption><b>Neo-noir</b> <span>charcoal &amp; teal</span></figcaption>
+        </figure>
+      </div>
+
+      <figcaption class="demo__caption">
+        The art style is not baked into the model. It is a field on the project — one line of
+        text the director writes — and every keyframe is composed as <i>identity + style +
+        scene</i>: the same line is handed to the motion model, and the director is told not to
+        invent a colour the style does not name. Change the line, re-render the part, and the
+        same beats come back as a different film. These four are one beat of chapter one with
+        the same seed, size, four steps and identity; only the style string differs. Rendered
+        here, on this card, in seconds each.
+      </figcaption>
     </figure>
   </div>
 

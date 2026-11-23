@@ -441,6 +441,35 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 }
 .demo--opsis .demo__caption b { color: var(--paper); font-weight: 600; }
 .demo--opsis .demo__frame { border-radius: 12px; }
+
+/* the look is a field: one scene, four styles ---------------------------- */
+.styles {
+  width: min(var(--wrap), 100% - var(--gutter) * 2);
+  margin: clamp(2.5rem, 7vh, 4.5rem) auto 0;
+}
+.styles__grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem 1rem;
+  margin: 1.1rem 0 0;
+}
+.styles__grid figure { margin: 0; }
+.styles__grid img {
+  display: block; width: 100%; height: auto; border-radius: 8px;
+  border: 1px solid var(--paper-10); background: var(--ink-2);
+  transition: transform .5s var(--ease), border-color .3s var(--ease);
+}
+.styles__grid figure:hover img {
+  transform: translateY(-3px) scale(1.012); border-color: var(--paper-22);
+}
+.styles__grid figcaption {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .55rem;
+  margin-top: .65rem;
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--paper-45);
+}
+.styles__grid figcaption b {
+  color: var(--paper); font-weight: 600; letter-spacing: .12em;
+}
+.styles .demo__caption { max-width: 74ch; }
 .demo__frame {
   position: relative; margin: 1.1rem auto 0; border-radius: 14px; overflow: hidden;
   background: #05050a; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9), 0 0 0 1px var(--paper-10);
@@ -695,6 +724,7 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 
 @media (max-width: 900px) {
   .nav__links { display: none; }
+  .styles__grid { gap: .75rem; }
   .nav__cta { margin-left: auto; }
   .project__grid { grid-template-columns: 1fr; gap: 3rem; }
   .project__copy .body, .body { max-width: none; }
@@ -749,6 +779,7 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 
 @media (max-width: 640px) {
   .nav { height: 60px; }
+  .styles__grid { grid-template-columns: 1fr; gap: 1.1rem; }
   .hero { padding-bottom: 3rem; }
   .hero__inner { padding-top: 6.5rem; }
   .hero h1 { max-width: none; font-size: 2.3rem; }
