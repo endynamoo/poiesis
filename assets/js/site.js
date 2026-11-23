@@ -364,16 +364,61 @@ void main(){
       setClock(0);
       syncButton();
     });
+    /* Rhapsode's rule, applied here: do the work before the press. The graph and
+       the clip are warmed when the reader comes into view, so the first click
+       pays neither the analyser graph nor a cold fetch. Same lesson as upstream's
+       044b2a7 ("Warm the sentence on screen before play is pressed": 1257 ms to
+       first sound became 75 ms). */
+    let warmed = false;
+    function warmVoice() {
+      if (warmed || !voice) return;
+      warmed = true;
+      wireAudio();
+      if (voice.readyState < 3) voice.load();
+      const src = voice.currentSrc || voice.getAttribute("src");
+      if (src && typeof fetch === "function") {
+        fetch(src, { cache: "force-cache" }).catch(() => {});
+      }
+    }
+    if (voice) {
+      // The first gesture anywhere wakes the graph, not the press of play: the
+      // audio device is already running by the time the reader asks for sound.
+      const wake = () => {
+        warmVoice();
+        if (actx && actx.state === "suspended") actx.resume().catch(() => {});
+      };
+      ["pointerdown", "keydown", "touchstart"].forEach((ev) =>
+        window.addEventListener(ev, wake, { once: true, passive: true }));
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((rows) => {
+          if (rows.some((r) => r.isIntersecting)) {
+            warmVoice();
+            io.disconnect();
+          }
+        }, { rootMargin: "300px 0px" });
+        io.observe(voice.closest(".reader") || voice);
+      } else {
+        warmVoice();
+      }
+      if (hear) {
+        hear.addEventListener("pointerenter", warmVoice, { passive: true });
+        hear.addEventListener("focus", warmVoice);
+      }
+    }
+
     if (hear) {
       hear.addEventListener("click", async () => {
         if (voice.paused || voice.ended) {
           wireAudio();
-          if (actx && actx.state === "suspended") await actx.resume();
+          // Play first and resume the context behind the sound: a suspended
+          // context must never sit in front of the first frame.
           try {
             await voice.play();
           } catch (err) {
             syncButton();
           }
+          if (actx && actx.state === "suspended") actx.resume().catch(() => {});
         } else {
           voice.pause();
         }

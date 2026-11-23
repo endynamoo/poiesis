@@ -148,6 +148,11 @@ are 1px at 8–12% paper.
 Full showpiece, governed by three rules: nothing animates without a reason; nothing blocks
 reading; everything has a still version.
 
+- The reader's voice is warmed before the press, the way Rhapsode warms the sentence on
+  screen: `preload="auto"`, a cached fetch and the analyser graph built when the reader comes
+  into view, and `play()` is never awaited behind `AudioContext.resume()`. The measurement is
+  in the changelog: the graph now exists ~0.9 s before the click instead of inside it.
+
 - Shader hero: ~100 lines of GLSL painting a quasar (event horizon, photon ring, ringed
   accretion disk, twin jets) at `min(devicePixelRatio, 1.5)`, paused when the tab is hidden
   or the canvas is off-screen. Static single frame under `prefers-reduced-motion` and on

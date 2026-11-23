@@ -79,6 +79,14 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Fixed
 
+- **The reader's first press no longer pays for the audio.** The clip is preloaded and
+  fetched, and the analyser graph is built, while the reader is still looking at the page —
+  and playback is no longer gated behind `AudioContext.resume()`, which used to sit in front
+  of the first frame. This is Rhapsode's `044b2a7` (*warm the sentence on screen before play
+  is pressed*, 1257 ms → 75 ms to first sound) applied to a page whose clip is a file rather
+  than a synthesis. Instrumented run: the audio graph used to be constructed inside the click
+  (created 1204 ms, press 1201 ms); it is now built 905 ms before the press, and press →
+  first frame measures 5–15 ms locally.
 - The Opsis stage no longer pins itself on a short window. Below 760 px of viewport height
   it becomes a static plate — still, storyboard, copy, timeline — so the capability chips
   can no longer run into the timeline rail, which is exactly what a wide, short window was
