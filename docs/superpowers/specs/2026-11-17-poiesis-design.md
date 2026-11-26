@@ -93,8 +93,9 @@ The frame carries a status banner beside the shot slate — violet beacon, `Unre
 will be read as one. It sits at the top right in both the pinned stage and the static plate,
 and it is real text rather than decoration, so it is announced to a screen reader too.
 
-Ends with `Opsis on GitHub →`, `v0.1.1-pre-alpha · MIT · Windows 11 · ROCm`, and one honest
-sentence about what it is: a studio that is early, and works.
+Ends with `Follow the build on GitHub ↗` — not the repository, which stays private until the
+beta — and one honest sentence beside it: Opsis is MIT like its sibling, and its source opens
+with the beta.
 
 Then, outside the pinned stage, the footage: 35 seconds cut from four of the twenty-two
 shots (03, 07, 12, 17) with a shot-by-shot transcript under it. Each cut lands in a pause the
@@ -104,6 +105,14 @@ It is marked **Alpha footage** in the slate pill and again as the caption's firs
 pre-alpha next to a shipped product will otherwise be read as one. The voice on it is
 Chatterbox Turbo, not Kokoro: the pipeline's own narration renderer, named so the page does
 not imply otherwise.
+
+After the take, the translation block: the sentence the film speaks, in four languages, with
+the source line above it in the serif face and each language labelled in mono with its tag.
+Under it, one paragraph that names the model, says it ran here, notes macOS uses Apple's
+framework, and admits Hindi is missing because it looped locally — an absence with a reason
+reads as honesty where a silent gap reads as an oversight. `tools/make_translation_demo.py`
+regenerates it through Rhapsode's own translator; `docs/translation-demo.json` is the record,
+and a test fails if the page and that file disagree.
 
 After it, the style grid: one beat of chapter one rendered four ways — warm cel, woodcut,
 ukiyo-e, neo-noir — and animated four times, since a still proves the palette and a clip

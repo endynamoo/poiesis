@@ -196,6 +196,23 @@ class SiteTests(unittest.TestCase):
         for claim in ("identity + style", "field on the project"):
             self.assertIn(claim, block, "the demo does not say how style works")
 
+    def test_the_translation_block_shows_the_rendered_samples(self):
+        """The four translations must be the ones the tool wrote, not retyped ones."""
+        source = INDEX.read_text(encoding="utf-8")
+        start = source.index('<figure class="translation')
+        end = source.index("</section>", start)
+        block = source[start:end]
+        data = json.loads((ROOT / "docs" / "translation-demo.json").read_text(encoding="utf-8"))
+        self.assertGreaterEqual(len(data["results"]), 3, "fewer than three languages shown")
+        for row in data["results"]:
+            self.assertIn('lang="%s"' % row["lang"], block, "no %s row" % row["label"])
+            self.assertIn(row["text"], block,
+                          "%s text on the page is not the text the tool rendered" % row["label"])
+        self.assertEqual(block.count("<dd lang="), len(data["results"]),
+                         "a row exists on the page that the tool did not render")
+        # the claim that makes it local
+        self.assertIn("on this machine", block, "the block does not say where it ran")
+
     def test_no_link_points_at_a_repository_that_is_not_public(self):
         """Opsis's repo is private until its beta, so a link to it would 404.
 
