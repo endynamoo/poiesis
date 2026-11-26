@@ -8,11 +8,18 @@ were given is the other half.
 The portfolio site for **Rhapsode** and **Opsis**: one static page, no framework, no build
 step, no runtime dependency. It is served straight from the repository root by GitHub Pages.
 
-**The repository is private and the site is therefore unpublished.** GitHub Pages only
-publishes from private repositories on a paid plan; on the free account nothing is deployed
-and `.github/workflows/pages.yml` is manual-only on purpose. `python -m http.server 8137` is
-how the page is reviewed for now. Do not "fix" the deploy by making the repository public
-without being asked.
+**The repository is public and the site is live** at <https://endynamoo.github.io/poiesis/>.
+Pages is configured with `build_type=workflow` and `.github/workflows/pages.yml` deploys on every
+push to `main`; the repository's homepage field points at the same URL. If the repository ever has
+to go private again, delete the Pages site and comment out the `push` trigger in the same change,
+or every push to `main` will fail there. `python -m http.server 8137` is still the fastest way to
+review a working tree.
+
+**Opsis's repository is private until its beta,** so nothing published may link to it: the Opsis
+CTA points at the account and says the source opens with the beta.
+`tests/test_site.py::test_no_link_points_at_a_repository_that_is_not_public` fails if the link
+returns early. Restore the link, the test's assertion and the `Unreleased · ETA ~2 weeks` banner
+together when Opsis ships.
 
 **The constraints are the point.** A portfolio about lean, local-first software must not ship
 a 200 KB framework or call a CDN to show four paragraphs. Before adding anything, ask whether

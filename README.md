@@ -85,6 +85,7 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Fixed**
 
+- **The style loops stop when the tab is hidden.** `AGENTS.md` asks that anything looping pause off-screen *or* when the tab is hidden; the four clips only did the first. They now stop on `visibilitychange` and restart together if the grid is still on screen (measured: playing at `t=1.78` on all four, `paused: true` on all four once hidden, in step again on return).
 - **The hero no longer waits on an observer to be seen.** Reveals already on screen at first paint are marked in the next animation frame; only below-the-fold reveals still wait. Measured in-browser under 4× CPU and a 1.6 Mbps link, the largest contentful paint is ~1.5 s; Lighthouse's *simulated* mobile run still reports 4.8 s, which is its Lantern estimate rather than a measurement of the page.
 
 **Changed**
