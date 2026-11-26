@@ -8,10 +8,9 @@ One page, five movements: a quasar turning over drifting dust, a reader where th
 lifts off the page, a film stage scrubbed by scroll, four receipts about how the work is made,
 and a way to get in touch.
 
-Live at **https://endynamoo.github.io/poiesis/** — *currently unpublished.* The repository is
-private while the site is finished, and GitHub Pages only publishes from private repositories
-on a paid plan. Run it locally (below) or make the repository public again to bring the URL
-back; see `.github/workflows/pages.yml`.
+Live at **https://endynamoo.github.io/poiesis/** — the repository is public and Pages deploys
+it on every push to `main`. Run it locally with the command below when you want to review a
+working tree before it ships.
 
 ## What it is
 
@@ -82,9 +81,14 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Added**
 
-- **The style demo moves.** Four clips instead of four stills: one beat of chapter one, animated four times — warm cel, woodcut, ukiyo-e, neo-noir — so the comparison is the film and not the frame. Each keyframe was composed by the product's own path (`identity + style + scene`), then handed to Wan 2.2 I2V with the same style line as its motion prompt, which is what the app's motion job does. Silent, looping, 5 seconds each (~320 KB), all four started together so they stay in step; they pause when the grid leaves the screen and stay on their posters under reduced motion.
-- **The look is a field, shown four ways.** The grid explains the mechanism the product actually uses: every keyframe is composed as *identity + style + scene*, the same style line goes to the motion model, and the director is told not to invent a colour the style does not name. Rendered on this machine by `tools/make_style_variants.py` and `tools/make_style_clips.py`, which call Opsis's own keyframe and motion composition.
+- **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main` again: the repository is public, Pages is configured with `build_type=workflow`, and the deploy workflow has its `push` trigger back.
 
-*...and 26 more entries in [CHANGELOG.md](CHANGELOG.md).*
+**Changed**
+
+- **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
+- **Opsis's repository is private until its beta**, so the page no longer links to it: the CTA reads "Follow the build on GitHub" and points at the account, and the copy says plainly that Opsis's source opens with the beta instead of calling both projects' code public.
+- **The style demo moves.** Four clips instead of four stills: one beat of chapter one, animated four times — warm cel, woodcut, ukiyo-e, neo-noir — so the comparison is the film and not the frame. Each keyframe was composed by the product's own path (`identity + style + scene`), then handed to Wan 2.2 I2V with the same style line as its motion prompt, which is what the app's motion job does. Silent, looping, 5 seconds each (~320 KB), all four started together so they stay in step; they pause when the grid leaves the screen and stay on their posters under reduced motion.
+
+*...and 27 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

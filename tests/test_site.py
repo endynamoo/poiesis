@@ -196,6 +196,17 @@ class SiteTests(unittest.TestCase):
         for claim in ("identity + style", "field on the project"):
             self.assertIn(claim, block, "the demo does not say how style works")
 
+    def test_no_link_points_at_a_repository_that_is_not_public(self):
+        """Opsis's repo is private until its beta, so a link to it would 404.
+
+        Rhapsode is public and linked. When Opsis ships, the CTA can point at
+        github.com/endynamoo/opsis again; until then it points at the account.
+        """
+        source = INDEX.read_text(encoding="utf-8")
+        self.assertNotIn("github.com/endynamoo/opsis", source,
+                         "Opsis is private - that link 404s for visitors")
+        self.assertIn("github.com/endynamoo/rhapsode", source, "Rhapsode link is missing")
+
     def test_html_is_utf8_and_not_double_encoded(self):
         """A PowerShell read/write cycle double-encodes every em dash in this file."""
         text = INDEX.read_bytes().decode("utf-8")  # raises on invalid bytes

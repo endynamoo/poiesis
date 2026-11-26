@@ -8,6 +8,16 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main`
+  again: the repository is public, Pages is configured with `build_type=workflow`, and the
+  deploy workflow has its `push` trigger back.
+
+### Changed
+
+- **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
+- **Opsis's repository is private until its beta**, so the page no longer links to it: the CTA
+  reads "Follow the build on GitHub" and points at the account, and the copy says plainly that
+  Opsis's source opens with the beta instead of calling both projects' code public.
 - **The style demo moves.** Four clips instead of four stills: one beat of chapter one,
   animated four times — warm cel, woodcut, ukiyo-e, neo-noir — so the comparison is the film
   and not the frame. Each keyframe was composed by the product's own path
