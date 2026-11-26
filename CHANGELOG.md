@@ -11,6 +11,10 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 - **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main`
   again: the repository is public, Pages is configured with `build_type=workflow`, and the
   deploy workflow has its `push` trigger back.
+- **The workflows run the current action majors** — `checkout@v7`, `setup-python@v7`,
+  `configure-pages@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`. The old ones ran on a
+  deprecated Node, and on two pushes in a row the deploy failed with "No artifacts named
+  github-pages were found" while the upload step still reported success.
 
 ### Fixed
 

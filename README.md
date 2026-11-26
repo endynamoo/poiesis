@@ -82,6 +82,7 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 **Added**
 
 - **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main` again: the repository is public, Pages is configured with `build_type=workflow`, and the deploy workflow has its `push` trigger back.
+- **The workflows run the current action majors** — `checkout@v7`, `setup-python@v7`, `configure-pages@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`. The old ones ran on a deprecated Node, and on two pushes in a row the deploy failed with "No artifacts named github-pages were found" while the upload step still reported success.
 
 **Fixed**
 
@@ -91,8 +92,7 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 **Changed**
 
 - **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
-- **Opsis's repository is private until its beta**, so the page no longer links to it: the CTA reads "Follow the build on GitHub" and points at the account, and the copy says plainly that Opsis's source opens with the beta instead of calling both projects' code public.
 
-*...and 28 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 29 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->
