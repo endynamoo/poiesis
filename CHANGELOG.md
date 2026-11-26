@@ -8,6 +8,11 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- **The translation take.** A 25-second recording of the app reading a Spanish translation of an
+  English page: the voice is `ef_dora`, the bar under the page carries each translated sentence,
+  and the lit word is the Spanish word being spoken. Recorded by `tools/make_translation_clip.py`,
+  which boots the app against a throwaway data directory and captures the audio the same way the
+  Rhapsode take's is captured.
 - **Translation samples, under the Rhapsode take.** The sentence the demo speaks, in
   Spanish, French, Japanese and Chinese — produced on this machine by the translator Rhapsode
   installs itself (Qwen2.5-7B-Instruct q4 through llama.cpp), 2.5–3.3 s a line. The caption

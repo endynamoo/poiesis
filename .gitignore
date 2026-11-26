@@ -6,3 +6,5 @@ __pycache__/
 docs/style-variants/clips/
 # per-shot pieces; the montage that ships is assets/video/opsis-demo.mp4
 docs/opsis-demo/
+# recorder stills; the take and its poster are in assets/
+docs/translation-take-*.png

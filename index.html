@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=15">
+<link rel="stylesheet" href="assets/css/site.css?v=17">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -210,14 +210,50 @@
       </details>
     </figure>
 
-    <!-- the same sentence in four languages, from the translator the app installs
-         itself. Rendered by tools/make_translation_demo.py; the JSON beside it in
-         docs/ holds the same output. -->
-    <figure class="translation reveal" aria-labelledby="translation-title">
+    <!-- the take: Rhapsode reading a Spanish translation, recorded by
+         tools/make_translation_clip.py. The four-language list under it is the same
+         translator's output, rendered by tools/make_translation_demo.py. -->
+    <figure class="demo demo--translation reveal" aria-labelledby="translation-title">
       <div class="demo__slate">
-        <p class="demo__rec"><i aria-hidden="true"></i> On-device translation</p>
-        <p class="demo__meta" id="translation-title">Qwen2.5&#8209;7B · q4 · local · 2.5–3.3&nbsp;s a sentence</p>
+        <p class="demo__rec"><i aria-hidden="true"></i> Unedited take</p>
+        <p class="demo__meta" id="translation-title">Rhapsode · a Spanish voice reading a translated page · 0:25</p>
       </div>
+
+      <div class="demo__frame">
+        <video class="demo__video" id="translation-demo" controls preload="none" playsinline
+               width="1280" height="872"
+               poster="assets/img/translation-demo-poster.webp"
+               aria-describedby="translation-desc">
+          <source src="assets/video/translation-demo.mp4" type="video/mp4">
+          <p>Your browser cannot play this file. <a href="assets/video/translation-demo.mp4">Download the take</a> (547&nbsp;KB).</p>
+        </video>
+        <span class="demo__scrim" aria-hidden="true"></span>
+        <button class="demo__play" type="button" id="translation-demo-play">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5l12 7-12 7z" fill="currentColor"/></svg>
+          <span>Watch it read</span>
+        </button>
+      </div>
+
+      <figcaption class="demo__caption" id="translation-desc">
+        The reading voice is Spanish, the book is English, and the switch called “translate to
+        voice language” is on — so each sentence is translated on this machine before Kokoro
+        speaks it. The bar under the page carries the translated sentence, and the word lighting
+        up is the Spanish word the voice is on. Nothing was uploaded: the translator is a 7B
+        model running in llama.cpp beside the app, and on macOS this step is Apple's own
+        framework instead.
+      </figcaption>
+
+      <details class="demo__transcript">
+        <summary>What is on screen, second by second</summary>
+        <ol>
+          <li><b>0:00</b> — the library, with one document in it.</li>
+          <li><b>0:02</b> — <i>The Lantern-Keeper's Ledger</i> opens in Book view, in English.</li>
+          <li><b>0:04</b> — play. Spanish voice <code>ef_dora</code>; the first sentence arrives translated as “El conservador de faroles contó las naves esa noche, como había hecho cada noche durante once años.”</li>
+          <li><b>0:14</b> — the next sentence: “La mantuvo como su abuela: una página para cada noche, el tiempo en la margen, las naves en el cuerpo…”</li>
+          <li><b>0:24</b> — stopped. Every line stayed on this machine.</li>
+        </ol>
+        <p>The sentence is translated first and spoken second: the delay you hear at 0:04 is the model, not the network. There is no network.</p>
+      </details>
 
       <blockquote class="translation__source">
         The lantern keeper counted the ships that evening, as she had done every evening
@@ -243,13 +279,12 @@
         </div>
       </dl>
 
-      <figcaption class="demo__caption">
-        The same sentence, translated on this machine by the model Rhapsode installs itself:
-        no API key, no upload, about three seconds a line on the card that rendered the rest
-        of this page. On macOS Rhapsode uses Apple's own translation framework instead.
-        Hindi is deliberately absent — on every local model we measured it looped, so Hindi
-        is routed to a server you run rather than read aloud as gibberish.
-      </figcaption>
+      <p class="translation__note">
+        The same sentence in four languages, from the same translator: no API key, no upload,
+        2.5–3.3&nbsp;s a line on the card that rendered this page. Hindi is deliberately absent —
+        on every local model we measured it looped, so Hindi is routed to a server you run rather
+        than read aloud as gibberish.
+      </p>
     </figure>
   </section>
 
