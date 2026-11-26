@@ -8,6 +8,11 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- **Pages builds and deploys in two jobs.** The current action majors alone did not stop the
+  failure: on a third push the deploy step asked for the artifact about two seconds after the
+  upload and still got "No artifacts named github-pages were found", with the artifact present
+  ten seconds later. The deploy now runs in its own job that starts after the upload completes,
+  which is the gap the official Pages template relies on.
 - **The translation take.** A 25-second recording of the app reading a Spanish translation of an
   English page: the voice is `ef_dora`, the bar under the page carries each translated sentence,
   and the lit word is the Spanish word being spoken. Recorded by `tools/make_translation_clip.py`,

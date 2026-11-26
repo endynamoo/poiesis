@@ -91,11 +91,10 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Added**
 
+- **Pages builds and deploys in two jobs.** The current action majors alone did not stop the failure: on a third push the deploy step asked for the artifact about two seconds after the upload and still got "No artifacts named github-pages were found", with the artifact present ten seconds later. The deploy now runs in its own job that starts after the upload completes, which is the gap the official Pages template relies on.
 - **The translation take.** A 25-second recording of the app reading a Spanish translation of an English page: the voice is `ef_dora`, the bar under the page carries each translated sentence, and the lit word is the Spanish word being spoken. Recorded by `tools/make_translation_clip.py`, which boots the app against a throwaway data directory and captures the audio the same way the Rhapsode take's is captured.
 - **Translation samples, under the Rhapsode take.** The sentence the demo speaks, in Spanish, French, Japanese and Chinese — produced on this machine by the translator Rhapsode installs itself (Qwen2.5-7B-Instruct q4 through llama.cpp), 2.5–3.3 s a line. The caption names the model, says where it ran, notes that macOS uses Apple's framework instead, and explains why Hindi is absent: it looped on every local model measured here, so the app routes it to a server the reader runs.
-- **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main` again: the repository is public, Pages is configured with `build_type=workflow`, and the deploy workflow has its `push` trigger back.
-- **The workflows run the current action majors** — `checkout@v7`, `setup-python@v7`, `configure-pages@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`. The old ones ran on a deprecated Node, and on two pushes in a row the deploy failed with "No artifacts named github-pages were found" while the upload step still reported success.
 
-*...and 32 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 34 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->
