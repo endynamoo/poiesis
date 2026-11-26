@@ -563,6 +563,10 @@ code { font-family: var(--mono); font-size: .88em; color: var(--paper-70); }
 .opsis__copy > * { max-width: 34rem; }
 .opsis__copy .h2 { margin-bottom: 1.6rem; }
 .opsis__copy .body { color: rgba(236, 233, 248, .72); }
+.opsis__note {
+  margin: -.5rem 0 0;
+  font-size: .86rem; line-height: 1.6; color: var(--paper-45);
+}
 
 .chips {
   display: grid; grid-template-columns: repeat(2, max-content);
