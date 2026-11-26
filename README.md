@@ -83,12 +83,15 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 - **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main` again: the repository is public, Pages is configured with `build_type=workflow`, and the deploy workflow has its `push` trigger back.
 
+**Fixed**
+
+- **The hero no longer waits on an observer to be seen.** Reveals already on screen at first paint are marked in the next animation frame; only below-the-fold reveals still wait. Measured in-browser under 4× CPU and a 1.6 Mbps link, the largest contentful paint is ~1.5 s; Lighthouse's *simulated* mobile run still reports 4.8 s, which is its Lantern estimate rather than a measurement of the page.
+
 **Changed**
 
 - **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
 - **Opsis's repository is private until its beta**, so the page no longer links to it: the CTA reads "Follow the build on GitHub" and points at the account, and the copy says plainly that Opsis's source opens with the beta instead of calling both projects' code public.
-- **The style demo moves.** Four clips instead of four stills: one beat of chapter one, animated four times — warm cel, woodcut, ukiyo-e, neo-noir — so the comparison is the film and not the frame. Each keyframe was composed by the product's own path (`identity + style + scene`), then handed to Wan 2.2 I2V with the same style line as its motion prompt, which is what the app's motion job does. Silent, looping, 5 seconds each (~320 KB), all four started together so they stay in step; they pause when the grid leaves the screen and stay on their posters under reduced motion.
 
-*...and 27 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 28 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

@@ -12,6 +12,14 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
   again: the repository is public, Pages is configured with `build_type=workflow`, and the
   deploy workflow has its `push` trigger back.
 
+### Fixed
+
+- **The hero no longer waits on an observer to be seen.** Reveals already on screen at first
+  paint are marked in the next animation frame; only below-the-fold reveals still wait. Measured
+  in-browser under 4× CPU and a 1.6 Mbps link, the largest contentful paint is ~1.5 s; Lighthouse's
+  *simulated* mobile run still reports 4.8 s, which is its Lantern estimate rather than a
+  measurement of the page.
+
 ### Changed
 
 - **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
