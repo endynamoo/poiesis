@@ -184,8 +184,18 @@ void main(){
   }
 
   /* — 2 · reveal on entry ------------------------------------------------ */
+  // Anything already on screen at first paint is revealed in the next frame
+  // instead of waiting for an observer callback: the hero is what Lighthouse
+  // measures, and an observer that fires a second late makes the first paragraph
+  // the largest-contentful paint at 4.8 s. Below-the-fold reveals keep observing.
   const revealEls = Array.from(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window && !reduced.matches) {
+    const fold = window.innerHeight;
+    requestAnimationFrame(() => {
+      revealEls.forEach((el) => {
+        if (el.getBoundingClientRect().top < fold) el.classList.add("in");
+      });
+    });
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
