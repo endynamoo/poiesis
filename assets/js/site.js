@@ -488,6 +488,7 @@ void main(){
   const styleGrid = document.querySelector(".styles__grid");
   if (styleLoops.length && styleGrid) {
     const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let inView = false;
     const run = () => {
       if (still.matches) return;
       styleLoops.forEach((v) => {
@@ -499,13 +500,22 @@ void main(){
 
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver((rows) => {
-        if (rows.some((row) => row.isIntersecting)) run();
+        inView = rows.some((row) => row.isIntersecting);
+        if (inView) run();
         else halt();
       }, { threshold: 0.15 });
       io.observe(styleGrid);
     } else {
+      inView = true;
       run();
     }
+
+    // a hidden tab gets no frames: silence the loops while it is away, and put
+    // them back together if the grid is still on screen when it returns
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) halt();
+      else if (inView) run();
+    });
 
     // a demo take or the reader taking over silences the loops
     demos.forEach((figure) => {
