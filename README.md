@@ -17,23 +17,32 @@ working tree before it ships.
 - **Static and self-contained.** Hand-written HTML, CSS and JavaScript. No framework, no
   build step, no CDN, no analytics, no third-party request at runtime. The display face is
   self-hosted; the body uses whatever the visitor's system already renders best.
+- **Demos that are the product.** The page shows a real 65-second Rhapsode take, a 35-second
+  Opsis montage cut where its narration pauses (labelled alpha), the same beat animated in four
+  art styles, and translation samples produced by Rhapsode's own on-device translator - not
+  mock-ups, and not stock footage.
 - **Real stills, drawn interface.** The Opsis stage uses eight actual frames from the
   chapter-one pipeline, not stock imagery. The Rhapsode window is drawn in CSS so it stays
   crisp on any display instead of showing a dated screenshot.
 - **Motion with a still version.** A WebGL hero, scroll-driven reveals and a pinned film
-  stage — all of which honour `prefers-reduced-motion`, pause off-screen, and degrade to a
-  readable page when the shader cannot start.
+  stage - all of which honour `prefers-reduced-motion`, pause off-screen or behind a hidden
+  tab, and degrade to a readable page when the shader cannot start.
 
 ```
 index.html
-assets/css/site.css        the visual system
-assets/js/site.js          shader, reader voice, scrub, reveals
-assets/audio/reader.mp3    Kokoro-82M speaking the passage (105 KB)
-assets/img/*.webp          eight stills + the social card
-assets/fonts/*.woff2       Instrument Serif (SIL OFL 1.1, licence beside it)
-tools/make_reader_audio.py re-renders the clip and its word timings
-tools/changelog_render.py  README changelog generator
-tests/                     site and changelog checks
+assets/css/site.css         the visual system
+assets/js/site.js           shader, reader voice, scrub, reveals, demo loops
+assets/audio/reader.mp3     Kokoro-82M speaking the passage (105 KB)
+assets/video/*.mp4          the two takes and the four style loops
+assets/img/*.webp           eight stills, posters and the social card
+assets/fonts/*.woff2        Instrument Serif (SIL OFL 1.1, licence beside it)
+tools/make_reader_audio.py  re-renders the clip and its word timings
+tools/make_opsis_demo.py    re-cuts the Opsis montage at the narration's pauses
+tools/make_style_variants.py  the four keyframes of one beat
+tools/make_style_clips.py   animates those four keyframes
+tools/make_translation_demo.py  the translation samples, via Rhapsode's translator
+tools/changelog_render.py   README changelog generator
+tests/                      site and changelog checks
 ```
 
 The reader is not a mock-up of a voice: the clip was rendered by
@@ -81,18 +90,14 @@ Newest first. The full history is in [CHANGELOG.md](CHANGELOG.md); this block is
 
 **Added**
 
+- **Translation samples, under the Rhapsode take.** The sentence the demo speaks, in Spanish, French, Japanese and Chinese — produced on this machine by the translator Rhapsode installs itself (Qwen2.5-7B-Instruct q4 through llama.cpp), 2.5–3.3 s a line. The caption names the model, says where it ran, notes that macOS uses Apple's framework instead, and explains why Hindi is absent: it looped on every local model measured here, so the app routes it to a server the reader runs.
 - **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main` again: the repository is public, Pages is configured with `build_type=workflow`, and the deploy workflow has its `push` trigger back.
 - **The workflows run the current action majors** — `checkout@v7`, `setup-python@v7`, `configure-pages@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`. The old ones ran on a deprecated Node, and on two pushes in a row the deploy failed with "No artifacts named github-pages were found" while the upload step still reported success.
 
 **Fixed**
 
 - **The style loops stop when the tab is hidden.** `AGENTS.md` asks that anything looping pause off-screen *or* when the tab is hidden; the four clips only did the first. They now stop on `visibilitychange` and restart together if the grid is still on screen (measured: playing at `t=1.78` on all four, `paused: true` on all four once hidden, in step again on return).
-- **The hero no longer waits on an observer to be seen.** Reveals already on screen at first paint are marked in the next animation frame; only below-the-fold reveals still wait. Measured in-browser under 4× CPU and a 1.6 Mbps link, the largest contentful paint is ~1.5 s; Lighthouse's *simulated* mobile run still reports 4.8 s, which is its Lantern estimate rather than a measurement of the page.
 
-**Changed**
-
-- **Rhapsode is at v0.3.6-beta** and the page says so, with the release it points at.
-
-*...and 29 more entries in [CHANGELOG.md](CHANGELOG.md).*
+*...and 31 more entries in [CHANGELOG.md](CHANGELOG.md).*
 
 <!-- CHANGELOG:END -->

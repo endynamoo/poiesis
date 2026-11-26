@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://endynamoo.github.io/poiesis/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=13">
+<link rel="stylesheet" href="assets/css/site.css?v=15">
 </head>
 <body>
 <a class="skip" href="#rhapsode">Skip to the work</a>
@@ -208,6 +208,48 @@
         </ol>
         <p>The spoken words are the book's own text — “The lantern keeper counted the ships that evening, as she had done every evening for eleven years.” — read by Kokoro-82M running locally.</p>
       </details>
+    </figure>
+
+    <!-- the same sentence in four languages, from the translator the app installs
+         itself. Rendered by tools/make_translation_demo.py; the JSON beside it in
+         docs/ holds the same output. -->
+    <figure class="translation reveal" aria-labelledby="translation-title">
+      <div class="demo__slate">
+        <p class="demo__rec"><i aria-hidden="true"></i> On-device translation</p>
+        <p class="demo__meta" id="translation-title">Qwen2.5&#8209;7B · q4 · local · 2.5–3.3&nbsp;s a sentence</p>
+      </div>
+
+      <blockquote class="translation__source">
+        The lantern keeper counted the ships that evening, as she had done every evening
+        for eleven years.
+      </blockquote>
+
+      <dl class="translation__list">
+        <div>
+          <dt>Spanish <em>es</em></dt>
+          <dd lang="es">El conservador de faroles contó las naves esa noche, como había hecho cada noche durante once años.</dd>
+        </div>
+        <div>
+          <dt>French <em>fr</em></dt>
+          <dd lang="fr">Le gardien de lanterne a compté les navires ce soir-là, comme il le faisait chaque soir pendant onze ans.</dd>
+        </div>
+        <div>
+          <dt>Japanese <em>ja</em></dt>
+          <dd lang="ja">提灯屋はその夜も、そして11年間毎晩のように船を数えました。</dd>
+        </div>
+        <div>
+          <dt>Chinese <em>zh</em></dt>
+          <dd lang="zh">那个灯笼看守人那天晚上数了船，就像过去十一年来每个夜晚所做的那样。</dd>
+        </div>
+      </dl>
+
+      <figcaption class="demo__caption">
+        The same sentence, translated on this machine by the model Rhapsode installs itself:
+        no API key, no upload, about three seconds a line on the card that rendered the rest
+        of this page. On macOS Rhapsode uses Apple's own translation framework instead.
+        Hindi is deliberately absent — on every local model we measured it looped, so Hindi
+        is routed to a server you run rather than read aloud as gibberish.
+      </figcaption>
     </figure>
   </section>
 

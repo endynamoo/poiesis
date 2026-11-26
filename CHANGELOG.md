@@ -8,6 +8,12 @@ of this file into the README; `tests/test_changelog.py` fails when that copy is 
 
 ### Added
 
+- **Translation samples, under the Rhapsode take.** The sentence the demo speaks, in
+  Spanish, French, Japanese and Chinese — produced on this machine by the translator Rhapsode
+  installs itself (Qwen2.5-7B-Instruct q4 through llama.cpp), 2.5–3.3 s a line. The caption
+  names the model, says where it ran, notes that macOS uses Apple's framework instead, and
+  explains why Hindi is absent: it looped on every local model measured here, so the app routes
+  it to a server the reader runs.
 - **The site is live.** `endynamoo.github.io/poiesis` publishes on every push to `main`
   again: the repository is public, Pages is configured with `build_type=workflow`, and the
   deploy workflow has its `push` trigger back.

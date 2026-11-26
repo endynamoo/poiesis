@@ -4,3 +4,5 @@ Thumbs.db
 __pycache__/
 # rendered again by tools/make_style_clips.py; the bytes that ship are in assets/video
 docs/style-variants/clips/
+# per-shot pieces; the montage that ships is assets/video/opsis-demo.mp4
+docs/opsis-demo/

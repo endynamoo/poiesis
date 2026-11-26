@@ -1,0 +1,33 @@
+{
+ "source": "The lantern keeper counted the ships that evening, as she had done every evening for eleven years.",
+ "variant": "7b",
+ "model_label": "7B",
+ "model_repo": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+ "note": "correct for Spanish, French, Japanese and Chinese; about 2 s a sentence",
+ "results": [
+  {
+   "lang": "es",
+   "label": "Spanish",
+   "text": "El conservador de faroles contó las naves esa noche, como había hecho cada noche durante once años.",
+   "seconds": 3.04
+  },
+  {
+   "lang": "fr",
+   "label": "French",
+   "text": "Le gardien de lanterne a compté les navires ce soir-là, comme il le faisait chaque soir pendant onze ans.",
+   "seconds": 3.29
+  },
+  {
+   "lang": "ja",
+   "label": "Japanese",
+   "text": "提灯屋はその夜も、そして11年間毎晩のように船を数えました。",
+   "seconds": 2.86
+  },
+  {
+   "lang": "zh",
+   "label": "Chinese",
+   "text": "那个灯笼看守人那天晚上数了船，就像过去十一年来每个夜晚所做的那样。",
+   "seconds": 2.53
+  }
+ ]
+}
