@@ -199,7 +199,7 @@ class SiteTests(unittest.TestCase):
     def test_the_translation_block_shows_the_rendered_samples(self):
         """The four translations must be the ones the tool wrote, not retyped ones."""
         source = INDEX.read_text(encoding="utf-8")
-        start = source.index('<figure class="translation')
+        start = source.index('<figure class="demo demo--translation')
         end = source.index("</section>", start)
         block = source[start:end]
         data = json.loads((ROOT / "docs" / "translation-demo.json").read_text(encoding="utf-8"))
@@ -212,6 +212,14 @@ class SiteTests(unittest.TestCase):
                          "a row exists on the page that the tool did not render")
         # the claim that makes it local
         self.assertIn("on this machine", block, "the block does not say where it ran")
+        # and the take that shows it being read
+        clip = ROOT / "assets" / "video" / "translation-demo.mp4"
+        self.assertTrue(clip.is_file(), "the translation take is missing")
+        self.assertIn("assets/video/translation-demo.mp4", block, "the page does not play it")
+        self.assertTrue(
+            (ROOT / "assets" / "img" / "translation-demo-poster.webp").is_file(),
+            "the take has no poster")
+
 
     def test_no_link_points_at_a_repository_that_is_not_public(self):
         """Opsis's repo is private until its beta, so a link to it would 404.

@@ -106,12 +106,13 @@ pre-alpha next to a shipped product will otherwise be read as one. The voice on 
 Chatterbox Turbo, not Kokoro: the pipeline's own narration renderer, named so the page does
 not imply otherwise.
 
-After the take, the translation block: the sentence the film speaks, in four languages, with
-the source line above it in the serif face and each language labelled in mono with its tag.
-Under it, one paragraph that names the model, says it ran here, notes macOS uses Apple's
-framework, and admits Hindi is missing because it looped locally — an absence with a reason
-reads as honesty where a silent gap reads as an oversight. `tools/make_translation_demo.py`
-regenerates it through Rhapsode's own translator; `docs/translation-demo.json` is the record,
+After the take, the translation block opens with its own recording: 25 seconds of the app reading
+a Spanish translation of the English page — the Spanish sentence in the bar under the page, the
+lit word following the Spanish voice, nothing leaving the machine. Above it the slate names what
+it is, below it a caption says why the sentence arrives before the voice, and a second-by-second
+transcript sits behind a `<details>`. Then the four lines as text, for reading rather than
+watching. `tools/make_translation_clip.py` records the take through the app's own UI, and
+`tools/make_translation_demo.py` renders the lines; `docs/translation-demo.json` is the record,
 and a test fails if the page and that file disagree.
 
 After it, the style grid: one beat of chapter one rendered four ways — warm cel, woodcut,
